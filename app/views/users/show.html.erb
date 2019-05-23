@@ -1,4 +1,7 @@
 <% @title = @user.username %>
+<%= javascript_include_tag 'components/modal', defer: true %>
 
 <h1><%= @user.username %> Profile</h1>
 
+<button id="delete_user">Delete Account</button>
+<%= render "confirm_delete", user: @user %>
