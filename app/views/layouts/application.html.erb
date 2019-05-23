@@ -2,14 +2,23 @@
 <html>
   <head>
     <title>RedditClone</title>
+    <meta name="description" content="A MVP clone of Reddit">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="logo">RedditClone</div>
+      <%= render "shared/nav_bar" %>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

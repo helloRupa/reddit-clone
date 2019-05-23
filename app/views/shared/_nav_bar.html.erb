@@ -1,0 +1,8 @@
+<% user = current_user %>
+
+<nav>
+    <% if user %>
+        <%= link_to user.username, user_url(user) %>
+        <%= button_to "Log Out", session_url(user), method: :delete %>
+    <% end %>
+</nav>
