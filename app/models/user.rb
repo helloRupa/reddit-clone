@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token, :ensure_activation_token
 
+  def to_param
+    self.username
+  end
+
   def password=(pw)
     @password = pw
     self.password_digest = BCrypt::Password.create(pw)
