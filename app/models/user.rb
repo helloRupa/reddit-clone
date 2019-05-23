@@ -39,6 +39,11 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def activate_user
+    self.activated = true
+    self.save!
+  end
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end

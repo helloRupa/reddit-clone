@@ -1,0 +1,5 @@
+<% @title = @user.username %>
+
+<h1><%= @user.username %> Profile</h1>
+
+<%= button_to 'Log Out', session_url(current_user), method: :delete %>

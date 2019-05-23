@@ -1,0 +1,28 @@
+<% @title = "Register" %>
+
+<h1>Register</h1>
+
+<%= render "shared/errors" %>
+
+<%= form_with model: @user, local: true do |form| %>
+    <div>
+        <%= label :user, :email %>
+        <%= form.text_field :email, value: @user.email, required: true %>
+    </div>
+
+    <div>
+        <%= label :user, :username %>
+        <%= form.text_field :username, value: @user.username, minlength: "3", required: true %>
+    </div>
+
+    <div>
+        <%= label :user, :password %>
+        <%= form.password_field :password, minlength: "8", required: true %>
+    </div>
+
+    <div>
+        <%= form.submit "Sign Up" %>
+    </div>
+<% end %>
+
+<p>Already signed up? <%= link_to "Log In", new_session_url %></p>

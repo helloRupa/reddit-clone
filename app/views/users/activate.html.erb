@@ -1,0 +1,15 @@
+<% @title = 'Fake Email' %>
+
+<h1>Welcome to RedditClone, <%= @user.username %>!</h1>
+
+<p>Before you can use this site, you must activate your account. <%= link_to "Activate Now!", @url %></p>
+
+<p>Thanks for joining. Have fun and be safe!</p>
+<p>- The RedditClone Team</p>
+
+<div class="psa">
+    <p>
+        It is a bad idea to activate accounts this way. Always send this link in a text or email.
+        We are showing this message here due to Heroku deployment compatibility.
+    </p>
+</div>

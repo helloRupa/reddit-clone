@@ -1,0 +1,27 @@
+<% @title = "Log In" %>
+
+<h1>Log In</h1>
+
+<%= render "shared/errors" %>
+
+<% if @url %>
+    <div>Please activate your account: <%= link_to "Activation Link", @url %></div>
+<% end %>
+
+<%= form_with model: @user, url: session_url, local: true do |form| %>
+    <div>
+        <%= label :user, :email %>
+        <%= form.text_field :email, value: @user.email, required: true %>
+    </div>
+
+    <div>
+        <%= label :user, :password %>
+        <%= form.password_field :password, required: true %>
+    </div>
+
+    <div>
+        <%= form.submit "Log In" %>
+    </div>
+<% end %>
+
+<p>Need an account? Why not <%= link_to "Sign Up", new_user_url %>!

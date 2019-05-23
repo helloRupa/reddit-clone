@@ -1,0 +1,9 @@
+<% flash.each do |key, msg| %>
+    <% if msg.is_a?(String) %>
+        <div class="<%= key %>"><%= msg %></div>
+    <% else %>
+        <% msg.each do |string| %>
+            <div class="<%= key %>"><%= string %></div>
+        <% end %>
+    <% end %>
+<% end %>
