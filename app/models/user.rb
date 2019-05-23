@@ -11,7 +11,8 @@ class User < ApplicationRecord
   validates :email, :username, :password_digest, :session_token, :activation_token, presence: true
   validates :email, :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 8, allow_nil: true }
-  validates :username, length: { minimum: 3 }, format: { with: /\A[a-zA-Z0-9-_$.+!*()]+\z/ }
+  validates :username, length: { minimum: 3 }, format: { with: /\A[a-zA-Z0-9-_$.+!*()]+\z/, 
+      message: 'allows only letters, numbers, and symbols -_$.+!*()' }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   after_initialize :ensure_session_token, :ensure_activation_token

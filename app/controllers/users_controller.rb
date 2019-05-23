@@ -25,9 +25,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = current_user
+    user = User.find_by_username(params[:username])
 
-    if user.destroy
+    if current_user == user && user.destroy
       redirect_to new_user_url
     else
       flash[:error] = 'Oops, something went wrong and you still exist'
