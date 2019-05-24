@@ -8,6 +8,7 @@
 </section>
 
 <section class="posts">
+    <%= link_to "Post", new_post_url(sub_id: @sub.id) %>
     <% if @sub.posts.empty? %>
         <p>No posts to see here</p>
     <% else %>

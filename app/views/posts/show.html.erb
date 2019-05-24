@@ -1,0 +1,14 @@
+<% @title = @post.title %>
+
+<h1>Post: <%= @post.title %></h1>
+<p>
+    Posted by: <%= link_to @author.username, user_url(@author) %> in: <%= link_to @sub.title, sub_url(@sub) %>
+</p>
+
+<%= url_link(@post) %>
+<%= url_preview(@post) %>
+
+<p><%= @post.content %></p>
+
+<%= link_to "Edit Post", edit_post_url(@post) %>
+<%= button_to "Delete Post", post_url(@post), method: :delete %>

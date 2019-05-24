@@ -1,0 +1,28 @@
+<%= form_with model: post, local: true do |form| %>
+    <div>
+        <%= label :post, :title %>
+        <%= form.text_field :title, minlength: MIN_POST, maxlength: MAX_POST, required: true %>
+    </div>
+
+    <div>
+        <%= label :post, :url %>
+        <%= form.text_field :url %>
+    </div>
+
+    <div>
+        <%= label :post, :content %>
+        <%= form.text_area :content %>
+    </div>
+
+    <div>
+        <% subs.each do |sub| %>
+            <% checked = post.sub_id == sub.id %>
+            <input type="radio" id="sub_<%=sub.id%>" name="post[sub_id]" value="<%= sub.id %>" checked="<%= checked %>">
+            <label for="sub_<%=sub.id%>"><%= sub.title %></label>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit "Save" %>
+    </div>
+<% end %>
