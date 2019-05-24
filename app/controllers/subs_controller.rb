@@ -37,14 +37,12 @@ class SubsController < ApplicationController
   end
 
   def update
-    @sub = Sub.find_by_id(params[:sub][:id])
-    title = @sub.title
+    @sub = Sub.find_by_title(params[:title])
 
     if @sub.update_attributes(sub_edit_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:error] = @sub.errors.full_messages
-      @sub.title = title
       render :edit
     end
   end

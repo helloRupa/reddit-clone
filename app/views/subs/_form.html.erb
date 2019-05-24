@@ -2,7 +2,8 @@
     <input type="hidden" id="sub_id" name="sub[id]" value="<%= sub.id %>">
     <div>
         <%= label :sub, :title %>
-        <%= form.text_field :title, minlength: MIN_TITLE, maxlength: MAX_TITLE, required: true %>
+        <%= form.text_field :title, minlength: MIN_TITLE, maxlength: MAX_TITLE, required: true,
+            disabled: sub.persisted? %>
     </div>
 
     <div>
