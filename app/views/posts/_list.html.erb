@@ -2,8 +2,7 @@
     <div>
         <%= link_to post.title, post_url(post) %>
         <%= link_to post.author.username, user_url(post.author) %>
-        <%= url_link(post) %>
-        <%= url_preview(post) %>
+        <%= choose_url_format(post) %>
         <%= post.excerpt %>
     </div>
 <% end %>

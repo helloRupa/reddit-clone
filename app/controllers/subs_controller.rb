@@ -13,7 +13,7 @@ class SubsController < ApplicationController
   end
 
   def create
-    @sub = Sub.new(sub_params)
+    @sub = Sub.new(sub_new_params)
     @sub.add_moderator(current_user.id)
 
     if @sub.save
@@ -40,7 +40,7 @@ class SubsController < ApplicationController
     @sub = Sub.find_by_id(params[:sub][:id])
     title = @sub.title
 
-    if @sub.update_attributes(sub_params)
+    if @sub.update_attributes(sub_edit_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:error] = @sub.errors.full_messages
@@ -57,7 +57,11 @@ class SubsController < ApplicationController
     redirect_to sub_url(sub)
   end
 
-  def sub_params
+  def sub_new_params
     params.require(:sub).permit(:title, :description)
+  end
+
+  def sub_edit_params
+    params.require(:sub).permit(:description)
   end
 end
