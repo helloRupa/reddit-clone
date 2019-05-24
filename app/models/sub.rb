@@ -4,7 +4,7 @@
 
 class Sub < ApplicationRecord
   validates :title, :description, :moderator, presence: true
-  validates :title, uniqueness: true, length: { minimum: 2, maximum: 20 }, format: { with: URL_SAFE_REGEX, 
+  validates :title, uniqueness: true, length: { minimum: MIN_TITLE, maximum: MAX_TITLE }, format: { with: URL_SAFE_REGEX, 
     message: 'allows only letters, numbers, and symbols -_$.+!*()' }
   
   belongs_to :user,

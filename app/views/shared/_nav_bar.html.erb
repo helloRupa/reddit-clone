@@ -1,4 +1,8 @@
-<nav>
+<nav class="left-nav">
+    <%= link_to "Subs", subs_url %>
+</nav>
+
+<nav class="right-nav">
     <% if current_user %>
         <%= link_to current_user.username, user_url(current_user) %>
         <%= button_to "Log Out", session_url(current_user), method: :delete %>

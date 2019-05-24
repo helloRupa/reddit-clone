@@ -26,6 +26,7 @@ class SubsController < ApplicationController
 
   def show
     @sub = Sub.find_by_title(params[:title])
+    @moderator = @sub.user
     render :show
   end
 
@@ -35,12 +36,15 @@ class SubsController < ApplicationController
   end
 
   def update
-    @sub = Sub.find_by_title(params[:title])
+    @sub = Sub.find_by_id(params[:sub][:id])
+    title = @sub.title
 
     if @sub.update_attributes(sub_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:error] = @sub.errors.full_messages
+      @sub.title = title
+      render :edit
     end
   end
 

@@ -1,0 +1,16 @@
+<%= form_with model: sub, local: true do |form| %>
+    <input type="hidden" id="sub_id" name="sub[id]" value="<%= sub.id %>">
+    <div>
+        <%= label :sub, :title %>
+        <%= form.text_field :title, minlength: MIN_TITLE, maxlength: MAX_TITLE, required: true %>
+    </div>
+
+    <div>
+        <%= label :sub, :description %>
+        <%= form.text_area :description, required: true %>
+    </div>
+
+    <div>
+        <%= form.submit "Save" %>
+    </div>
+<% end %>
