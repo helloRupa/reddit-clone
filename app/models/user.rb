@@ -17,6 +17,16 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token, :ensure_activation_token
 
+  has_many :subs,
+    class_name: 'Sub',
+    primary_key: :id,
+    foreign_key: :moderator
+
+  has_many :posts,
+    class_name: 'Post',
+    primary_key: :id,
+    foreign_key: :author_id
+
   def to_param
     self.username
   end

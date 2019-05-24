@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :not_logged_in, only: [:show]
+  # before_action :not_logged_in, only: [:show]
   before_action :already_logged_in, only: [:new, :create, :activate]
   before_action :wrong_user, only: [:destroy]
 

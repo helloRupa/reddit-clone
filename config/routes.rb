@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   get '/session', to: 'sessions#new'
 
   resources :subs, except: [:destroy], param: :title
+
+  resources :posts, except: [:index]
+
+  resources :pages, only: [:index]
+
+  root 'pages#index'
 end
