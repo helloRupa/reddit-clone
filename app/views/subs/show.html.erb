@@ -8,5 +8,9 @@
 </section>
 
 <section class="posts">
-<!-- Add Posts here -->
+    <% if @sub.posts.empty? %>
+        <p>No posts to see here</p>
+    <% else %>
+        <%= render "posts/list", posts: @sub.posts %>
+    <% end %>
 </section>

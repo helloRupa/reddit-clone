@@ -25,7 +25,8 @@ class SubsController < ApplicationController
   end
 
   def show
-    @sub = Sub.find_by_title(params[:title])
+    sub_data = Sub.where(title: params[:title]).includes(posts: [:author])
+    @sub = sub_data.first
     @moderator = @sub.user
     render :show
   end

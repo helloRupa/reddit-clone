@@ -1,0 +1,11 @@
+<% posts.each do |post| %>
+    <div>
+        <%= post.title %>
+        <%= link_to post.author.username, user_url(post.author) %>
+        <% if post.url && post.url.length > 3 %>
+            <% preview = Onebox.preview(post.url) %>
+            <%= preview.to_s.html_safe %>
+        <% end %>
+        <%= post.excerpt %>
+    </div>
+<% end %>
