@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :not_logged_in, only: [:show, :destroy]
+  before_action :not_logged_in, only: [:show]
   before_action :already_logged_in, only: [:new, :create, :activate]
+  before_action :wrong_user, only: [:destroy]
 
   def new
     @user = User.new
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find_by_username(params[:username])
 
-    if current_user == user && user.destroy
+    if user.destroy
       redirect_to new_user_url
     else
       flash[:error] = 'Oops, something went wrong and you still exist'
@@ -48,6 +49,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def wrong_user
+    user = User.find_by_username(params[:username])
+    return if current_user == user
+    redirect_to user_url(user)
+  end
 
   def handle_activation(user)
     if user.activated

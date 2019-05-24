@@ -20,8 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    user = current_user
-    logout!(user) if user
+    logout!(current_user) if current_user
   end
 
   private

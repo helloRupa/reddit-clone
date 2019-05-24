@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_05_23_231858) do
     t.string "title", null: false
     t.text "description", null: false
     t.integer "moderator", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["moderator"], name: "index_subs_on_moderator"
     t.index ["title"], name: "index_subs_on_title", unique: true
   end

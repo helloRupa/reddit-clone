@@ -1,0 +1,10 @@
+<% @title = "All Subs" %>
+
+<h1>All Subs</h1>
+<%= link_to "Add New Sub", new_sub_url %>
+
+<% if @subs.empty? %>
+    <p>No subs yet</p>
+<% else %>
+    <%= render "list_all", subs: @subs %>
+<% end %>

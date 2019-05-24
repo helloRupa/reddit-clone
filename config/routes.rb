@@ -3,12 +3,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :destroy], param: :username do
     get 'activate', on: :collection
   end
-
   get '/users', to: 'users#new'
   
   resource :session, only: [:new, :create, :destroy]
-
   get '/session', to: 'sessions#new'
 
-  resources :subs, except: [:destroy]
+  resources :subs, except: [:destroy], param: :title
 end
