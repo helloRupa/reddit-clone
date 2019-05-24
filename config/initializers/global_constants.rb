@@ -1,3 +1,9 @@
 URL_SAFE_REGEX = /\A[a-zA-Z0-9-_$.+!*()]+\z/
+
 MAX_TITLE = 20
 MIN_TITLE = 2
+
+MAX_UNAME = 20
+MIN_UNAME = 3
+
+MIN_PWORD = 8

@@ -10,8 +10,8 @@ class User < ApplicationRecord
 
   validates :email, :username, :password_digest, :session_token, :activation_token, presence: true
   validates :email, :username, :session_token, uniqueness: true
-  validates :password, length: { minimum: 8, allow_nil: true }
-  validates :username, length: { minimum: 3, maximum: 20 }, format: { with: URL_SAFE_REGEX, 
+  validates :password, length: { minimum: MIN_PWORD, allow_nil: true }
+  validates :username, length: { minimum: MIN_UNAME, maximum: MAX_UNAME }, format: { with: URL_SAFE_REGEX, 
       message: 'allows only letters, numbers, and symbols -_$.+!*()' }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
