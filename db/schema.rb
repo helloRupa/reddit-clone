@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_045038) do
+ActiveRecord::Schema.define(version: 2019_05_25_000608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_05_24_045038) do
     t.text "content"
     t.integer "sub_id", null: false
     t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["sub_id"], name: "index_posts_on_sub_id"
     t.index ["title"], name: "index_posts_on_title"

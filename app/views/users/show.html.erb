@@ -4,8 +4,10 @@
 
 <%= render 'shared/errors' %>
 
-<button id="delete_user">Delete Account</button>
+<% if current_user == @user %>
+    <button id="delete_user">Delete Account</button>
 
-<%= render "confirm_delete", user: @user %>
+    <%= render "confirm_delete", user: @user %>
+<% end %>
 
 <%= javascript_include_tag 'components/modal' %>

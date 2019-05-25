@@ -8,7 +8,7 @@
 
 # Clear all tables and reset id values
 ActiveRecord::Base.transaction do
-  [User].each do |c|
+  [User, Sub, Post].each do |c|
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{c.table_name} RESTART IDENTITY;")
   end
 end

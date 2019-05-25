@@ -4,7 +4,9 @@
     <h1>Sub: <%= @sub.title %></h1>
     <%= link_to @moderator.username, user_url(@moderator) %>
     <p><%= @sub.description %></p>
-    <%= link_to "Edit Sub", edit_sub_url(@sub) %>
+    <% if current_user == @moderator %>
+        <%= link_to "Edit Sub", edit_sub_url(@sub) %>
+    <% end %>
 </section>
 
 <section class="posts">

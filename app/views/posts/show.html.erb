@@ -9,5 +9,7 @@
 
 <p><%= @post.content %></p>
 
-<%= link_to "Edit Post", edit_post_url(@post) %>
-<%= button_to "Delete Post", post_url(@post), method: :delete %>
+<% if current_user == @author %>
+    <%= link_to "Edit Post", edit_post_url(@post) %>
+    <%= button_to "Delete Post", post_url(@post), method: :delete %>
+<% end %>
