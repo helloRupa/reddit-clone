@@ -6,8 +6,10 @@
 
 class Post < ApplicationRecord
   EXCERPT_LENGTH = 197
-  validates :title, presence: true
+  validates :title, :slug, presence: true
   validates :title, length: { minimum: MIN_POST, maximum: MAX_POST }
+  before_validation :add_slug
+  before_create :final_slug
 
   belongs_to :sub
 
@@ -16,9 +18,17 @@ class Post < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id
 
-    def to_param
-      "#{self.id}-#{self.title.parameterize}"
-    end
+  def to_param
+    "#{self.id}-#{self.slug}"
+  end
+
+  def final_slug
+    self.slug = self.title.parameterize
+  end
+
+  def add_slug
+    self.slug ||= self.title.parameterize
+  end
 
   def excerpt
     return self.content if self.content.nil? || self.content.length <= EXCERPT_LENGTH
