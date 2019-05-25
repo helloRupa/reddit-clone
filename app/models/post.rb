@@ -8,15 +8,25 @@ class Post < ApplicationRecord
   EXCERPT_LENGTH = 197
   validates :title, :slug, presence: true
   validates :title, length: { minimum: MIN_POST, maximum: MAX_POST }
-  before_validation :add_slug
+  before_validation :add_slug, :check_sub
   before_create :final_slug
 
-  belongs_to :sub
+  # belongs_to :sub
 
   belongs_to :author,
     class_name: 'User',
     primary_key: :id,
     foreign_key: :author_id
+
+  has_many :post_subs, 
+    inverse_of: :post
+
+  has_many :subs,
+    through: :post_subs
+
+  def check_sub
+    errors.add(:post, 'must be posted under at least one sub') unless self.subs.length > 0
+  end
 
   def to_param
     "#{self.id}-#{self.slug}"
