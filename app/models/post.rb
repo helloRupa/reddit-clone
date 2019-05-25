@@ -28,4 +28,8 @@ class Post < ApplicationRecord
   def add_author(author_id)
     self.author_id = author_id
   end
+
+  def self.create_order
+    self.order(:created_at)
+  end
 end

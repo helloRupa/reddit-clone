@@ -21,4 +21,8 @@ class Sub < ApplicationRecord
   def add_moderator(user_id)
     self.moderator = user_id
   end
+
+  def self.subs_alpha_order
+    Sub.order(Sub.arel_table[:title].lower.asc)
+  end
 end
