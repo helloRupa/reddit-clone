@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     @post = Post.find_by_id(params[:id])
 
     if @post.destroy
-      redirect_to request.referrer
+      redirect_to subs_url
     else
       flash[:error] = "Oops, something went wrong. Post still exists."
       render :show

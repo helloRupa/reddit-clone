@@ -12,8 +12,6 @@ class Sub < ApplicationRecord
     primary_key: :id,
     foreign_key: :moderator
 
-  # has_many :posts
-
   has_many :post_subs
 
   has_many :posts,

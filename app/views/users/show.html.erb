@@ -2,8 +2,6 @@
 
 <h1><%= @user.username %> Profile</h1>
 
-<%= render 'shared/errors' %>
-
 <% if current_user == @user %>
     <button id="delete_user">Delete Account</button>
 

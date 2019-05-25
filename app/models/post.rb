@@ -44,10 +44,6 @@ class Post < ApplicationRecord
     self.content[0..197] + '...'
   end
 
-  def add_sub(sub_id)
-    self.sub_id = sub_id
-  end
-
   def add_author(author_id)
     self.author_id = author_id
   end
