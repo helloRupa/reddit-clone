@@ -16,6 +16,10 @@ class Post < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id
 
+    def to_param
+      "#{self.id}-#{self.title.parameterize}"
+    end
+
   def excerpt
     return self.content if self.content.nil? || self.content.length <= EXCERPT_LENGTH
     self.content[0..197] + '...'

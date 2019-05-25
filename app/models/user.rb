@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token, :ensure_activation_token
 
+  before_destroy :reassign_entries
+
   has_many :subs,
     class_name: 'Sub',
     primary_key: :id,
@@ -26,6 +28,22 @@ class User < ApplicationRecord
     class_name: 'Post',
     primary_key: :id,
     foreign_key: :author_id
+
+  def reassign_entries
+    account_id = User.find_by_username(DESTROYED).id
+
+    User.transaction do
+      self.subs.each do |sub|
+        sub.moderator = account_id
+        sub.save!
+      end
+
+      self.posts.each do |post|
+        post.author_id = account_id
+        post.save!
+      end
+    end
+  end
 
   def to_param
     self.username

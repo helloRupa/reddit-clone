@@ -11,4 +11,7 @@ ActiveRecord::Base.transaction do
   [User, Sub, Post].each do |c|
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{c.table_name} RESTART IDENTITY;")
   end
+
+  # Add Users
+  User.create(email: "#{DESTROYED}@redditclone.com", username: DESTROYED, password: 'jfKdie48#5@mh39fnc_3nN')
 end

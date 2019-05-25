@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # before_action :not_logged_in, only: [:show]
   before_action :already_logged_in, only: [:new, :create, :activate]
   before_action :wrong_user, only: [:destroy]
+  before_action :deleted_user, only: [:show]
 
   def new
     @user = User.new
@@ -49,6 +50,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def deleted_user
+    return unless params[:username] == DESTROYED
+    link = request.referrer || root_url
+    redirect_to link
+  end
 
   def wrong_user
     user = User.find_by_username(params[:username])

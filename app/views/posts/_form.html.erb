@@ -17,7 +17,7 @@
     <div>
         <% subs.each do |sub| %>
             <% checked = post.sub_id == sub.id %>
-            <input type="radio" id="sub_<%=sub.id%>" name="post[sub_id]" value="<%= sub.id %>" checked="<%= checked %>">
+            <input type="radio" id="sub_<%=sub.id%>" name="post[sub_id]" value="<%= sub.id %>" <%= "checked" if checked %>>
             <label for="sub_<%=sub.id%>"><%= sub.title %></label>
         <% end %>
     </div>

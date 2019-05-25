@@ -10,3 +10,5 @@ MIN_PWORD = 8
 
 MAX_POST = 85
 MIN_POST = 3
+
+DESTROYED = 'deleted'
