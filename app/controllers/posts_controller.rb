@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :wrong_user, only: [:edit, :update, :destroy]
 
   def new
-    @post = Post.new(sub_id: params[:sub_id])
+    @post = Post.new
     @subs = Sub.subs_alpha_order.select(:id, :title)
     render :new
   end
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_id(params[:id])
     @author = @post.author
-    @sub = @post.sub
+    @subs = @post.subs
     render :show
   end
 
@@ -41,17 +41,16 @@ class PostsController < ApplicationController
       redirect_to post_url(@post)
     else
       @subs = Sub.subs_alpha_order.select(:id, :title)
-      flash.now[:error] = @post.errors
+      flash.now[:error] = @post.errors.full_messages
       render :edit
     end
   end
 
   def destroy
     @post = Post.find_by_id(params[:id])
-    sub = @post.sub
 
     if @post.destroy
-      redirect_to sub_url(sub)
+      redirect_to request.referrer
     else
       flash[:error] = "Oops, something went wrong. Post still exists."
       render :show
@@ -67,6 +66,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end
 end
