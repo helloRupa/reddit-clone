@@ -9,7 +9,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   validates :email, :username, :password_digest, :session_token, :activation_token, presence: true
-  validates :email, :username, :session_token, uniqueness: true
+  validates :email, :username, :session_token, :activation_token, uniqueness: true
   validates :password, length: { minimum: MIN_PWORD, allow_nil: true }
   validates :username, length: { minimum: MIN_UNAME, maximum: MAX_UNAME }, format: { with: URL_SAFE_REGEX, 
       message: 'allows only letters, numbers, and symbols -_$.+!*()' }
@@ -73,7 +73,7 @@ class User < ApplicationRecord
   end
 
   def ensure_activation_token
-    self.activation_token ||= self.class.generate_session_token
+    self.activation_token ||= self.class.generate_activation_token
   end
 
   def reset_session_token!
@@ -88,7 +88,17 @@ class User < ApplicationRecord
   end
 
   def self.generate_session_token
-    SecureRandom::urlsafe_base64(16)
+    token = SecureRandom::urlsafe_base64(16)
+
+    token = SecureRandom::urlsafe_base64(16) while User.find_by_session_token(token)
+    token
+  end
+
+  def self.generate_activation_token
+    token = SecureRandom::urlsafe_base64(16)
+
+    token = SecureRandom::urlsafe_base64(16) while User.find_by_activation_token(token)
+    token
   end
 
   def self.find_by_credentials(email, pw)
