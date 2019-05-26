@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @subs = Sub.subs_alpha_order.select(:id, :title)
+    @subs = Sub.alpha_order(:title).select(:id, :title)
     render :new
   end
 
@@ -15,22 +15,24 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_url(@post)
     else
-      @subs = Sub.subs_alpha_order.select(:id, :title)
+      @subs = Sub.alpha_order(:title).select(:id, :title)
       flash.now[:error] = @post.errors.full_messages
       render :new
     end
   end
 
   def show
-    @post = Post.find_by_id(params[:id])
+    post_data = Post.where(id: params[:id]).includes(comments: [:author]).create_order
+    @post = post_data.first
+    @comments = @post.comments
     @author = @post.author
-    @subs = @post.subs
+    @subs = @post.subs.alpha_order(:title)
     render :show
   end
 
   def edit
     @post = Post.find_by_id(params[:id])
-    @subs = Sub.subs_alpha_order.select(:id, :title)
+    @subs = Sub.alpha_order(:title).select(:id, :title)
     render :edit
   end
 
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
     if @post.update_attributes(post_params)
       redirect_to post_url(@post)
     else
-      @subs = Sub.subs_alpha_order.select(:id, :title)
+      @subs = Sub.alpha_order(:title).select(:id, :title)
       flash.now[:error] = @post.errors.full_messages
       render :edit
     end

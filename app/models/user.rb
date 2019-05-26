@@ -29,6 +29,11 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id
 
+  has_many :comments,
+    class_name: 'Comment',
+    primary_key: :id,
+    foreign_key: :author_id
+
   def reassign_entries
     account_id = User.find_by_username(DESTROYED).id
 
@@ -41,6 +46,11 @@ class User < ApplicationRecord
       self.posts.each do |post|
         post.author_id = account_id
         post.save!
+      end
+
+      self.comments.each do |comment|
+        comment.author_id = account_id
+        comment.save!
       end
     end
   end

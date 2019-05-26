@@ -1,19 +1,27 @@
 <% @title = @post.title %>
 
-<h1>Post: <%= @post.title %></h1>
+<section>
+    <h1>Post: <%= @post.title %></h1>
 
-<p>
-    Posted by: <%= link_to @author.username, user_url(@author) %> in: 
-        <% @subs.each do |sub| %>
-            <%= link_to sub.title, sub_url(sub) %>
-        <% end %>
-</p>
+    <p>
+        Posted by: <%= link_to @author.username, user_url(@author) %> in: 
+            <% @subs.each do |sub| %>
+                <%= link_to sub.title, sub_url(sub) %>
+            <% end %>
+    </p>
 
-<%= choose_url_format(@post) %>
+    <%= choose_url_format(@post) %>
 
-<p><%= @post.content %></p>
+    <p><%= @post.content %></p>
 
-<% if current_user == @author %>
-    <%= link_to "Edit Post", edit_post_url(@post) %>
-    <%= button_to "Delete Post", post_url(@post), method: :delete %>
-<% end %>
+    <% if current_user == @author %>
+        <%= link_to "Edit Post", edit_post_url(@post) %>
+        <%= button_to "Delete Post", post_url(@post), method: :delete %>
+    <% end %>
+</section>
+
+<section>
+    <h2>Comments</h2>
+    <%= render "comments/form", post_id: @post.id %>
+    <%= render "comments/list", comments: @comments %>
+</section>

@@ -1,0 +1,6 @@
+<% comments.each do |comment| %>
+    <div>
+        <%= link_to comment.author.username, user_url(comment.author) %>
+        <%= comment.content %>
+    </div>
+<% end %>

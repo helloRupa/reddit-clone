@@ -1,0 +1,11 @@
+<%= form_with model: Comment.new, local: true do |form| %>
+    <input type="hidden", name="post_id", value="<%= post_id %>">
+    <div>
+        <%= form.label :content, "Add Comment" %>
+        <%= form.text_area :content %>
+    </div>
+
+    <div>
+        <%= form.submit "Save" %>
+    </div>
+<% end %>

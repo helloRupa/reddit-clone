@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   resources :subs, except: [:destroy], param: :title
 
-  resources :posts, except: [:index]
+  resources :posts, except: [:index] do
+    resources :comments, only: [:new]
+  end
+
+  resources :comments, only: [:create]
 
   resources :pages, only: [:index]
 

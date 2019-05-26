@@ -5,6 +5,8 @@
 # author_id   integer       required
 
 class Post < ApplicationRecord
+  include Ordering
+
   EXCERPT_LENGTH = 197
   validates :title, :slug, presence: true
   validates :title, length: { minimum: MIN_POST, maximum: MAX_POST }
@@ -22,6 +24,9 @@ class Post < ApplicationRecord
 
   has_many :subs,
     through: :post_subs
+
+  has_many :comments,
+    dependent: :destroy
 
   def check_sub
     errors.add(:post, 'must belong to 1-3 subs') unless self.subs.length.between?(1, 3)
@@ -46,9 +51,5 @@ class Post < ApplicationRecord
 
   def add_author(author_id)
     self.author_id = author_id
-  end
-
-  def self.create_order
-    self.order(:created_at)
   end
 end
