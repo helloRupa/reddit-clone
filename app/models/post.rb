@@ -28,6 +28,10 @@ class Post < ApplicationRecord
   has_many :comments,
     dependent: :destroy
 
+  def top_level_comments
+    self.comments.where(parent_column_id: nil)
+  end
+
   def check_sub
     errors.add(:post, 'must belong to 1-3 subs') unless self.subs.length.between?(1, 3)
   end

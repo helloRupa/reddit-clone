@@ -22,6 +22,6 @@
 
 <section>
     <h2>Comments</h2>
-    <%= render "comments/form", post_id: @post.id %>
+    <%= render "comments/form", post_id: @post.id, parent_comment_id: nil %>
     <%= render "comments/list", comments: @comments %>
 </section>

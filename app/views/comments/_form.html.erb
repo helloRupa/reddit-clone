@@ -1,5 +1,7 @@
 <%= form_with model: Comment.new, local: true do |form| %>
-    <input type="hidden", name="post_id", value="<%= post_id %>">
+    <input type="hidden", name="comment[post_id]", value="<%= post_id %>">
+    <input type="hidden", name="comment[parent_comment_id]", value="<%= parent_comment_id %>">
+
     <div>
         <%= form.label :content, "Add Comment" %>
         <%= form.text_area :content %>

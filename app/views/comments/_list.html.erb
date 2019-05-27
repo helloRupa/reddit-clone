@@ -2,5 +2,11 @@
     <div>
         <%= link_to comment.author.username, user_url(comment.author) %>
         <%= comment.content %>
+        <%= link_to "Reply", "#", class: "reply-btn", id: "comment-#{comment.id}" %>
+        <div class="hide", id="form-<%= comment.id %>">
+            <%= render "comments/form", post_id: comment.post_id, parent_comment_id: comment.id %>
+        </div>
     </div>
 <% end %>
+
+<%= javascript_include_tag 'components/nested_comments' %>

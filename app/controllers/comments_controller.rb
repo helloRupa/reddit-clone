@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(author_id: current_user.id, post_id: params[:post_id])
+    @comment = Comment.new(author_id: current_user.id)
 
     if @comment.update_attributes(comment_params)
       redirect_to request.referrer
@@ -20,6 +20,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :parent_comment_id, :post_id)
   end
 end
