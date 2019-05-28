@@ -23,5 +23,9 @@
 <section>
     <h2>Comments</h2>
     <%= render "comments/form", post_id: @post.id, parent_comment_id: nil %>
-    <%= render "comments/list", comments: @comments %>
+    <div class="comments">
+        <%= nested_comments(@comments) %>
+    </div>
 </section>
+
+<%= javascript_include_tag 'components/nested_comments' %>

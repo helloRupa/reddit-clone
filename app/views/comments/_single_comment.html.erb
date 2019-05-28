@@ -1,0 +1,7 @@
+    <%= link_to comment.author.username, user_url(comment.author) %>
+    <div>Parent: <%= comment.parent_comment_id %>, Id: <%= comment.id %></div>
+    <%= comment.content %>
+    <%= link_to "Reply", "#", class: "reply-btn", id: "comment-#{comment.id}" %>
+    <div class="hide", id="form-<%= comment.id %>">
+        <%= render "comments/form", post_id: comment.post_id, parent_comment_id: comment.id %>
+    </div>
