@@ -1,5 +1,8 @@
 <% posts.each do |post| %>
-    <div>
+    <div id="p-<%= post.id %>">
+        <%= button_to '+', upvote_post_url(post) %>
+        <%= button_to '-', downvote_post_url(post) %>
+        <%= post.vote_total %>
         <%= link_to post.title, post_url(post) %>
         Posted by <%= link_to post.author.username, user_url(post.author) %> <%= post.time_ago %> ago
         <%= choose_url_format(post) %>

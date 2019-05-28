@@ -5,13 +5,13 @@ class Vote < ApplicationRecord
 
   belongs_to :voteable, polymorphic: true
 
-  def upvote
+  def upvote!
     self.value = 1
-    self.save!
+    self.save
   end
 
-  def downvote
+  def downvote!
     self.value = -1
-    self.save!
+    self.save
   end
 end

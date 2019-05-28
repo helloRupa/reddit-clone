@@ -17,6 +17,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    vote = Vote.new(user_id: current_user.id, voteable_type: 'Comment', voteable_id: params[:id].to_i)
+    flash[:error] = vote.errors.full_messages unless vote.upvote!
+    redirect_to "#{request.referrer}#c-#{params[:id]}"
+  end
+
+  def downvote
+    vote = Vote.new(user_id: current_user.id, voteable_type: 'Comment', voteable_id: params[:id].to_i)
+    flash[:error] = vote.errors.full_messages unless vote.downvote!
+    redirect_to "#{request.referrer}#c-#{params[:id]}"
+  end
+
   private
 
   def comment_params

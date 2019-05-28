@@ -25,7 +25,7 @@ class SubsController < ApplicationController
   end
 
   def show
-    sub_data = Sub.where(title: params[:title]).includes(posts: [:author]).create_order
+    sub_data = Sub.where(title: params[:title]).includes(posts: [:author, :votes]).create_order
     @sub = sub_data.first
     @moderator = @sub.user
     @posts = @sub.posts

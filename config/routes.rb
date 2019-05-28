@@ -12,10 +12,15 @@ Rails.application.routes.draw do
 
   resources :posts, except: [:index] do
     resources :comments, only: [:new]
+    member { post :upvote }
+    member { post :downvote }
   end
   get '/posts', to: 'subs#index'
 
-  resources :comments, only: [:create]
+  resources :comments, only: [:create] do
+    member { post :upvote }
+    member { post :downvote }
+  end
 
   resources :pages, only: [:index]
 

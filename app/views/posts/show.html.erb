@@ -1,6 +1,10 @@
 <% @title = @post.title %>
 <% @logged_in = !!current_user %>
-<section>
+
+<section id="p-<%=@post.id%>">
+    <%= button_to '+', upvote_post_url(@post) %>
+    <%= button_to '-', downvote_post_url(@post) %>
+    <%= @post.vote_total %>
     <h1>Post: <%= @post.title %></h1>
 
     <p>

@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    post_data = Post.where(id: params[:id]).includes(comments: [:author]).create_order
+    post_data = Post.where(id: params[:id]).includes(comments: [:author, :votes]).create_order
     @post = post_data.first
     @comments = @post.comments
     @author = @post.author
@@ -57,6 +57,18 @@ class PostsController < ApplicationController
       flash[:error] = "Oops, something went wrong. Post still exists."
       render :show
     end
+  end
+
+  def upvote
+    vote = Vote.new(user_id: current_user.id, voteable_type: 'Post', voteable_id: params[:id].to_i)
+    flash[:error] = vote.errors.full_messages unless vote.upvote!
+    redirect_to "#{request.referrer}#p-#{params[:id].to_i}"
+  end
+
+  def downvote
+    vote = Vote.new(user_id: current_user.id, voteable_type: 'Post', voteable_id: params[:id].to_i)
+    flash[:error] = vote.errors.full_messages unless vote.downvote!
+    redirect_to "#{request.referrer}#p-#{params[:id].to_i}"
   end
 
   private
