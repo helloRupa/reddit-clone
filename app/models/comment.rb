@@ -21,4 +21,6 @@ class Comment < ApplicationRecord
     class_name: 'Comment',
     foreign_key: :parent_comment_id,
     primary_key: :id
+
+  has_many :votes
 end

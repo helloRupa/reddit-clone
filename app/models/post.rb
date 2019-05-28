@@ -29,6 +29,8 @@ class Post < ApplicationRecord
   has_many :comments,
     dependent: :destroy
 
+  has_many :votes
+
   def top_level_comments
     self.comments.where(parent_column_id: nil)
   end
