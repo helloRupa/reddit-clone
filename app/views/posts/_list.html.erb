@@ -1,7 +1,7 @@
 <% posts.each do |post| %>
     <div>
         <%= link_to post.title, post_url(post) %>
-        <%= link_to post.author.username, user_url(post.author) %>
+        Posted by <%= link_to post.author.username, user_url(post.author) %> <%= post.time_ago %> ago
         <%= choose_url_format(post) %>
         <%= post.excerpt %>
     </div>

@@ -1,6 +1,9 @@
 <% comments.each do |comment| %>
     <div>
-        <%= link_to comment.author.username, user_url(comment.author) %>
+        <div>
+            <%= link_to comment.author.username, user_url(comment.author) %>
+            Posted <%= comment.time_ago %> ago
+        </div>
         <%= comment.content %>
         <%= link_to "Reply", "#", class: "reply-btn", id: "comment-#{comment.id}" %>
         <div class="hide", id="form-<%= comment.id %>">

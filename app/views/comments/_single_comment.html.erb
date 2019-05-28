@@ -1,4 +1,6 @@
-    <div><%= link_to comment.author.username, user_url(comment.author) %></div>
+    <div>
+        <%= link_to comment.author.username, user_url(comment.author) %> <%= comment.time_ago %> ago
+    </div>
     <!--<div>Parent: <%#= comment.parent_comment_id %>, Id: <%#= comment.id %></div>-->
     <%= comment.content %>
     <div><button class="reply-btn" id="comment-<%=comment.id%>" <%= "disabled" unless @logged_in %>>Reply</button></div>

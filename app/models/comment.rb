@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
   include Ordering
+  include Calcs
 
   validates :content, presence: true
 

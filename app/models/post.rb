@@ -6,6 +6,7 @@
 
 class Post < ApplicationRecord
   include Ordering
+  include Calcs
 
   EXCERPT_LENGTH = 197
   validates :title, :slug, presence: true

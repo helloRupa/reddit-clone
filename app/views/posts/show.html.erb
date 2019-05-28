@@ -8,6 +8,7 @@
             <% @subs.each do |sub| %>
                 <%= link_to sub.title, sub_url(sub) %>
             <% end %>
+        <%= @post.time_ago %> ago
     </p>
 
     <%= choose_url_format(@post) %>

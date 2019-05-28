@@ -6,6 +6,8 @@
 # activation_token, string,             present
 
 class User < ApplicationRecord
+  include Calcs
+
   attr_reader :password
 
   validates :email, :username, :password_digest, :session_token, :activation_token, presence: true
