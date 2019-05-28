@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     @post = post_data.first
     @comments = @post.comments
     @author = @post.author
-    @subs = @post.subs.alpha_order(:title)
+    @subs = @post.subs.alpha_order(:title).select(:id, :title)
     render :show
   end
 

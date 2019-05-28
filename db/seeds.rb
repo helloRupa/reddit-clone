@@ -8,7 +8,7 @@
 
 # Clear all tables and reset id values
 ActiveRecord::Base.transaction do
-  [User, Sub, Post].each do |c|
+  Dir['app/models/*.rb'].map {|f| File.basename(f, '.*').camelize.constantize }.each do |c|
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{c.table_name} RESTART IDENTITY;")
   end
 

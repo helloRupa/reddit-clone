@@ -1,5 +1,5 @@
 <% @title = @post.title %>
-
+<% @logged_in = !!current_user %>
 <section>
     <h1>Post: <%= @post.title %></h1>
 
@@ -22,7 +22,12 @@
 
 <section>
     <h2>Comments</h2>
-    <%= render "comments/form", post_id: @post.id, parent_comment_id: nil %>
+    <% if @logged_in %>
+        <%= render "comments/form", post_id: @post.id, parent_comment_id: nil %>
+    <% else %>
+        <p>Want to join in? Why not <%= link_to "sign up", new_user_url %>!</p>
+    <% end %>
+
     <div class="comments">
         <%= nested_comments(@comments) %>
     </div>
