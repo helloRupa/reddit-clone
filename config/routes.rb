@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
   get '/posts', to: 'subs#index'
 
-  resources :comments, only: [:create] do
+  resources :comments, only: [:create, :show] do
     member { post :upvote }
     member { post :downvote }
   end

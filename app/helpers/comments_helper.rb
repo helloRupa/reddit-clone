@@ -6,10 +6,10 @@ module CommentsHelper
     hash
   end
 
-  def nested_comments(comments)
+  def nested_comments(comments, start_key)
     return nil if comments.empty?
     hash = comments_hash(comments)
-    inner_comments(hash, nil).html_safe
+    inner_comments(hash, start_key).html_safe
   end
 
   def inner_comments(hash, comment_id)

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :not_logged_in
+  before_action :not_logged_in, except: [:show]
   
   def new
     @comment = Comment.new
@@ -15,6 +15,16 @@ class CommentsController < ApplicationController
       flash[:error] = @comment.errors.full_messages
       redirect_to request.referrer
     end
+  end
+
+  def show
+    comment_data = Comment.where(id: params[:id]).includes(:author, parent_comment: :author)
+    @comment = comment_data.first
+    @parent_comment = @comment.parent_comment
+    post_data = Post.where(id: @comment.post_id).includes(:author, comments: [:author, :votes]).create_order
+    @post = post_data.first
+    @post_author = @post.author
+    render :show
   end
 
   def upvote
