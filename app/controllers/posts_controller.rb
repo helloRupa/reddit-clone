@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :not_logged_in, only: [:new, :create]
+  before_action :not_logged_in, only: [:new, :create, :upvote, :downvote]
   before_action :wrong_user, only: [:edit, :update, :destroy]
 
   def new
