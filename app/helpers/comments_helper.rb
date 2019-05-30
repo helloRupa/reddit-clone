@@ -11,7 +11,7 @@ module CommentsHelper
     hash = comments_hash(comments)
 
     return threaded_comments(hash, start_key).html_safe if type == 'classic'
-    flat_comments(hash, start_key, 'blue', nil, hide).html_safe
+    flat_comments(hash, start_key, 'blue', hash[start_key].first, hide).html_safe
   end
 
   def flat_comments(hash, comment_id, color = 'blue', parent = nil, hide)
