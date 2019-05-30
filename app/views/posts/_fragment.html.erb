@@ -1,0 +1,6 @@
+<%= button_to '+', upvote_post_url(post) %>
+<%= button_to '-', downvote_post_url(post) %>
+<%= post.vote_total %>
+<h2><%= link_to post.title, post_url(post) %></h2>
+<%= choose_url_format(post) %>
+<p><%= post.long_excerpt %></p>

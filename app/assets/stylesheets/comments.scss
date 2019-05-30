@@ -6,10 +6,30 @@
     margin-left: 15px;
 }
 
-.comments > div {
+// .comments > div {
+//     margin-left: 0;
+// }
+
+.parent {
+    border: 1px solid black;
+}
+
+.parent div:first-of-type {
     margin-left: 0;
 }
 
 .main-comment {
     background-color: #cccccc;
+}
+
+.blue {
+    background-color: #e6f9ff;
+}
+
+.grey {
+    background-color: #ececec;
+}
+
+.red {
+    background-color: #ffcece;
 }

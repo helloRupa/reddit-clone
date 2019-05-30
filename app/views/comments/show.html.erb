@@ -20,7 +20,7 @@
     </div>
 
     <div class="comments">
-        <%= nested_comments(@post.comments, @comment.id) %>
+        <%= formatted_comments(@post.comments, @comment.id, 'flat', false) %>
     </div>
 
 </section>

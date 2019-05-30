@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   include Calcs
   include Voteable
 
+  QUOTE_LENGTH = 72
+
   validates :content, presence: true
 
   belongs_to :author,
@@ -22,4 +24,8 @@ class Comment < ApplicationRecord
     class_name: 'Comment',
     foreign_key: :parent_comment_id,
     primary_key: :id
+
+  def quote
+    self.content.length <= QUOTE_LENGTH ? self.content : "#{self.content[0..QUOTE_LENGTH]}..."
+  end
 end

@@ -34,7 +34,7 @@
     <% end %>
 
     <div class="comments">
-        <%= nested_comments(@comments, :nil) %>
+        <%= formatted_comments(@comments, nil, 'flat') %>
     </div>
 </section>
 
