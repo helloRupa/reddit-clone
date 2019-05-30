@@ -4,6 +4,7 @@
 
 class Sub < ApplicationRecord
   include Ordering
+  EXCERPT_LENGTH = 247
 
   validates :title, :description, :moderator, presence: true
   validates :title, uniqueness: true, length: { minimum: MIN_TITLE, maximum: MAX_TITLE }, format: { with: URL_SAFE_REGEX, 
@@ -25,5 +26,9 @@ class Sub < ApplicationRecord
 
   def add_moderator(user_id)
     self.moderator = user_id
+  end
+
+  def excerpt
+    self.description.length <= EXCERPT_LENGTH ? self.description : self.description[0..EXCERPT_LENGTH] + '...'
   end
 end

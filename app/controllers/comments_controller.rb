@@ -27,6 +27,12 @@ class CommentsController < ApplicationController
     render :show
   end
 
+  def destroy
+    comment = Comment.find_by_id(params[:id])
+    flash[:error] = comment.errors.full_messages unless comment.destroy
+    redirect_to request.referrer
+  end
+
   def upvote
     vote = Vote.new(user_id: current_user.id, voteable_type: 'Comment', voteable_id: params[:id].to_i)
     flash[:error] = vote.errors.full_messages unless vote.upvote!

@@ -3,6 +3,9 @@
         <%= button_to '-', downvote_comment_url(comment) %>
         <%= comment.vote_total %>
         <%= link_to comment.author.username, user_url(comment.author) %> <%= comment.time_ago %> ago
+        <% if current_user && (current_user.id == comment.author_id) %>
+            <%= button_to "Delete", comment_url(comment), method: :delete %>
+        <% end %>
     </div>
     <!--<div>Parent: <%#= comment.parent_comment_id %>, Id: <%#= comment.id %></div>-->
     <%= comment.content %>

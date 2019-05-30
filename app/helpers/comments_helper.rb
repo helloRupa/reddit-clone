@@ -14,7 +14,7 @@ module CommentsHelper
     flat_comments(hash, start_key, 'blue', hash[start_key].first, hide).html_safe
   end
 
-  def flat_comments(hash, comment_id, color = 'blue', parent = nil, hide)
+  def flat_comments(hash, comment_id, color = 'blue', parent = nil, hide = true)
     str = ''
     return str unless hash.key?(comment_id)
 

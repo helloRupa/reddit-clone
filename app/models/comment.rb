@@ -28,4 +28,10 @@ class Comment < ApplicationRecord
   def quote
     self.content.length <= QUOTE_LENGTH ? self.content : "#{self.content[0..QUOTE_LENGTH]}..."
   end
+
+  def destroy
+    self.author_id = User.find_by_username(DESTROYED).id
+    self.content = 'comment deleted'
+    self.save!
+  end
 end

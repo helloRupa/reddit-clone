@@ -3,7 +3,7 @@ class SubsController < ApplicationController
   before_action :wrong_user, only: [:edit, :update]
 
   def index
-    @subs = Sub.alpha_order(:title).select(:title)
+    @subs = Sub.alpha_order(:title)
     render :index
   end
 
