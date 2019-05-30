@@ -6,7 +6,10 @@
     </div>
     <!--<div>Parent: <%#= comment.parent_comment_id %>, Id: <%#= comment.id %></div>-->
     <%= comment.content %>
-    <div><button class="reply-btn" id="comment-<%=comment.id%>" <%= "disabled" unless @logged_in %>>Reply</button></div>
+    <div>
+        <button class="reply-btn <%= "hide" unless current_user %>" id="comment-<%=comment.id%>">Reply</button>
+        <%= link_to "Share", comment_url(comment) %>
+    </div>
     <div class="hide", id="form-<%= comment.id %>">
         <%= render "comments/form", post_id: comment.post_id, parent_comment_id: comment.id %>
     </div>

@@ -3,10 +3,39 @@
 <h1><%= @user.username %> Profile</h1>
 <p>Joined <%= @user.time_ago %> ago</p>
 
+<% unless @subs.empty? %>
+    <% sub_list = @subs.map { |sub| link_to sub.title, sub_url(sub) } %>
+    Moderates: <%= sub_list.join(' ').html_safe %>
+<% end %>
+
 <% if current_user == @user %>
     <button id="delete_user">Delete Account</button>
 
     <%= render "confirm_delete", user: @user %>
 <% end %>
 
+
+<% mixed_ordered_posts_comments(@posts, @comments).each do |data| %>
+    <% if data.is_a?(Array) %>
+        <% post, comments = separate_posts_comments(data) %>
+        <div>
+            <div class="post-fragment">
+                <%= button_to '+', upvote_post_url(post) %>
+                <%= button_to '-', downvote_post_url(post) %>
+                <%= post.vote_total %>
+                <h2><%= link_to post.title, post_url(post) %></h2>
+                <%= choose_url_format(post) %>
+                <p><%= post.long_excerpt %></p>
+            </div>
+            <% comments.each do |comment| %>
+                <%= render "comments/single_comment", comment: comment %>
+            <% end %>
+        </div>
+    <% else %>
+        <p>→ <%= link_to data.post.title, post_url(data.post) %></p>
+        <%= render "comments/single_comment", comment: data %>
+    <% end %>
+<% end %>
+
 <%= javascript_include_tag 'components/modal' %>
+<%= javascript_include_tag 'components/nested_comments' %>

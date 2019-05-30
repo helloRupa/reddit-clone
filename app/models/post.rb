@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   include Voteable
 
   EXCERPT_LENGTH = 197
+  LONG_EXCERPT_LENGTH = 997
+
   validates :title, :slug, presence: true
   validates :title, length: { minimum: MIN_POST, maximum: MAX_POST }
   before_validation :add_slug, :check_sub
@@ -52,7 +54,12 @@ class Post < ApplicationRecord
 
   def excerpt
     return self.content if self.content.nil? || self.content.length <= EXCERPT_LENGTH
-    self.content[0..197] + '...'
+    self.content[0..EXCERPT_LENGTH] + '...'
+  end
+
+  def long_excerpt
+    return self.content if self.content.nil? || self.content.length <= LONG_EXCERPT_LENGTH
+    self.content[0..LONG_EXCERPT_LENGTH] + '...'
   end
 
   def add_author(author_id)
