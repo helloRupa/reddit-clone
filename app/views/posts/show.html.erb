@@ -3,8 +3,9 @@
 
 <section id="p-<%=@post.id%>">
     <%= button_to '+', upvote_post_url(@post) %>
-    <%= button_to '-', downvote_post_url(@post) %>
     <%= @post.vote_total %>
+    <%= button_to '-', downvote_post_url(@post) %>
+    
     <h1>Post: <%= @post.title %></h1>
 
     <p>
