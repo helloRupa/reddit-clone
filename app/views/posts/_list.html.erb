@@ -7,6 +7,6 @@
         Posted by <%= post.author.username == DESTROYED ? DESTROYED : link_to(post.author.username, user_url(post.author)) %> 
         <%= post.time_ago %> ago
         <%= choose_url_format(post) %>
-        <%= post.excerpt %>
+        <%= short ? post.excerpt : post.long_excerpt %>
     </div>
 <% end %>

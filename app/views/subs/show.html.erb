@@ -18,6 +18,6 @@
     <% if @posts.empty? %>
         <p>No posts to see here</p>
     <% else %>
-        <%= render "posts/list", posts: @posts %>
+        <%= render "posts/list", posts: @posts, short: true %>
     <% end %>
 </section>
