@@ -26,5 +26,8 @@ Rails.application.routes.draw do
 
   resources :pages, only: [:index]
 
+  resources :searches, only: [:index]
+  get '/search', to: 'searches#index'
+
   root 'pages#index'
 end

@@ -1,0 +1,12 @@
+<% @title = "Search Results" %>
+
+<h1>Searched for <%= @query %></h1>
+
+<% if [@subs, @users, @posts].all?(&:empty?) %>
+    <p>Sorry, nothing to see here. Try searching for something else.</p>
+<% else %>
+    <%= render "subs/list_all", subs: @subs %>
+    <%= render "users/list", users: @users %>
+
+    <%= render "posts/list", posts: @posts, short: true %>
+<% end %>
