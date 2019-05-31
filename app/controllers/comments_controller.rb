@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(author_id: current_user.id)
 
     if @comment.update_attributes(comment_params)
-      redirect_to request.referrer
+      redirect_to post_url(Post.find_by_id(@comment.post_id), show_cid: "c-#{@comment.id}")
     else
       flash[:error] = @comment.errors.full_messages
       redirect_to request.referrer
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find_by_id(params[:id])
-    flash[:error] = comment.errors.full_messages unless comment.destroy
+    flash[:error] = comment.errors.full_messages unless comment.overwrite
     redirect_to request.referrer
   end
 
