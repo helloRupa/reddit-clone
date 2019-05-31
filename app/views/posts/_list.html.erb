@@ -4,7 +4,10 @@
         <%= button_to '-', downvote_post_url(post) %>
         <%= post.vote_total %>
         <%= link_to post.title, post_url(post) %>
-        Posted by <%= post.author.username == DESTROYED ? DESTROYED : link_to(post.author.username, user_url(post.author)) %> 
+        Posted by <%= post.author.username == DESTROYED ? DESTROYED : link_to(post.author.username, user_url(post.author)) %> in: 
+            <% post.subs.each do |sub| %>
+                <%= link_to sub.title, sub_url(sub) %>
+            <% end %>
         <%= post.time_ago %> ago
         <%= choose_url_format(post) %>
         <%= short ? post.excerpt : post.long_excerpt %>

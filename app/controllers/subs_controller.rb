@@ -1,5 +1,5 @@
 class SubsController < ApplicationController
-  before_action :not_logged_in, only: [:new, :create]
+  before_action :not_logged_in, only: [:new, :create, :subscribe]
   before_action :wrong_user, only: [:edit, :update]
 
   def index
@@ -25,7 +25,7 @@ class SubsController < ApplicationController
   end
 
   def show
-    sub_data = Sub.where(title: params[:title]).includes(posts: [:author, :votes]).create_order
+    sub_data = Sub.where(title: params[:title]).includes(posts: [:author, :votes, :subs]).create_order
     @sub = sub_data.first
     @moderator = @sub.user
     @posts = @sub.posts
