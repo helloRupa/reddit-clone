@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :not_logged_in, except: [:show]
+  before_action :wrong_user, only: [:destroy]
   
   def new
     @comment = Comment.new
@@ -46,6 +47,12 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def wrong_user
+    comment = Comment.find_by_id(params[:id])
+    return if current_user.id == comment.author_id
+    redirect_to request.referrer
+  end
 
   def comment_params
     params.require(:comment).permit(:content, :parent_comment_id, :post_id)
