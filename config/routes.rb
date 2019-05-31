@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   get '/session', to: 'sessions#new'
 
-  resources :subs, except: [:destroy], param: :title
+  resources :subs, except: [:destroy], param: :title do
+    member { post :subscribe }
+  end
 
   resources :posts, except: [:index] do
     resources :comments, only: [:new]

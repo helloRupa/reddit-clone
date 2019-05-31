@@ -48,6 +48,17 @@ class SubsController < ApplicationController
     end
   end
 
+  def subscribe
+    sub = Sub.find_by_title(params[:title])
+    subscription = Subscription.new(user_id: current_user.id, sub_id: sub.id)
+    if subscription.save
+      flash[:notice] = 'You have subscribed successfully to this sub'
+    else
+      flash[:error] = subscription.errors.full_messages
+    end
+    redirect_to sub_url(sub)
+  end
+
   private
 
   def wrong_user
