@@ -12,7 +12,8 @@ class Comment < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id
 
-  belongs_to :post
+  belongs_to :post,
+    counter_cache: true
 
   belongs_to :parent_comment,
     class_name: 'Comment',
