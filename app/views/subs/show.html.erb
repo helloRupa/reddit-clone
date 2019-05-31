@@ -2,7 +2,11 @@
 
 <section class="sub-details">
     <h1>Sub: <%= @sub.title %></h1>
-    <%= link_to @moderator.username, user_url(@moderator) %>
+    <% if @moderator.username == DESTROYED %>
+        <%= DESTROYED %>
+    <% else %>
+        <%= link_to @moderator.username, user_url(@moderator) %>
+    <% end %>
     <p><%= @sub.description %></p>
     <% if current_user == @moderator %>
         <%= link_to "Edit Sub", edit_sub_url(@sub) %>

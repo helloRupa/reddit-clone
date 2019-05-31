@@ -36,6 +36,12 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id
 
+  def score
+    p_score = self.posts.includes(:votes).sum(:value)
+    c_score = self.comments.includes(:votes).sum(:value)
+    p_score + c_score
+  end
+
   def reassign_entries
     account_id = User.find_by_username(DESTROYED).id
 

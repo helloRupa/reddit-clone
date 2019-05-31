@@ -8,7 +8,7 @@
     <h1>Post: <%= @post.title %></h1>
 
     <p>
-        Posted by: <%= link_to @author.username, user_url(@author) %> in: 
+        Posted by: <%= @author.username == DESTROYED ? DESTROYED : link_to(@author.username, user_url(@author)) %> in: 
             <% @subs.each do |sub| %>
                 <%= link_to sub.title, sub_url(sub) %>
             <% end %>
