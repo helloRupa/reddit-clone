@@ -4,3 +4,4 @@
 <h2><%= link_to post.title, post_url(post) %></h2>
 <%= choose_url_format(post) %>
 <p><%= post.long_excerpt %></p>
+<p><%= post.comments.size %> comments</p>

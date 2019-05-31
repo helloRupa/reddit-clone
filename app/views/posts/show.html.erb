@@ -19,6 +19,8 @@
 
     <p><%= @post.content %></p>
 
+    <p><%= @post.comments.size %> comments</p>
+
     <% if current_user == @author %>
         <%= link_to "Edit Post", edit_post_url(@post) %>
         <%= button_to "Delete Post", post_url(@post), method: :delete %>

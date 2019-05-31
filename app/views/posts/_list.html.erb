@@ -11,5 +11,6 @@
         <%= post.time_ago %> ago
         <%= choose_url_format(post) %>
         <%= short ? post.excerpt : post.long_excerpt %>
+        <p><%= post.comments.size %> comments</p>
     </div>
 <% end %>
