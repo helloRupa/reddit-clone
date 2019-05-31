@@ -1,6 +1,7 @@
 <% subs.each do |sub| %>
     <div>
         <h2><%= link_to sub.title, sub_url(sub) %></h2>
+        <p><%= sub.subscriptions.count %> members</p>
         <p><%= sub.excerpt %></p>
     </div>
 <% end %>

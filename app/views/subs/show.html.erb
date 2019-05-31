@@ -9,6 +9,8 @@
         <%= link_to @moderator.username, user_url(@moderator) %>
     <% end %>
 
+    <p><%= @sub.subscriptions.count %> members</p>
+
     <%= button_to('Subscribe', subscribe_sub_url(@sub)) if current_user %>
 
     <p><%= @sub.description %></p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_064944) do
+ActiveRecord::Schema.define(version: 2019_05_31_071323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_064944) do
     t.integer "moderator", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "subscriptions_count", default: 0
     t.index ["moderator"], name: "index_subs_on_moderator"
     t.index ["title"], name: "index_subs_on_title", unique: true
   end

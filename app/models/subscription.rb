@@ -4,5 +4,6 @@ class Subscription < ApplicationRecord
 
   belongs_to :user
 
-  belongs_to :sub
+  belongs_to :sub,
+    counter_cache: true
 end
