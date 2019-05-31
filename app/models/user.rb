@@ -36,6 +36,12 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id
 
+  has_many :subscriptions
+
+  has_many :subscribed_subs,
+    through: :subscriptions,
+    source: :sub
+
   def score
     p_score = self.posts.includes(:votes).sum(:value)
     c_score = self.comments.includes(:votes).sum(:value)

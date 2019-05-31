@@ -20,6 +20,12 @@ class Sub < ApplicationRecord
   has_many :posts,
     through: :post_subs
 
+  has_many :subscriptions
+
+  has_many :subscribers,
+    through: :subscriptions,
+    source: :user
+
   def to_param
     self.title
   end
