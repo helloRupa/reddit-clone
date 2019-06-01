@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:username])
     @subs = @user.subs.alpha_order(:title).select(:title)
-    @posts = @user.posts.create_order.includes(:votes)
+    @posts = @user.posts.create_order.includes(:votes, :subs)
     @comments = @user.comments.create_order.includes(:votes, :post)
     render :show
   end

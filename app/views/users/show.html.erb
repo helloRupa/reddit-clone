@@ -20,7 +20,7 @@
         <% post, comments = separate_posts_comments(data) %>
         <div>
             <div class="post-fragment">
-                <%= render "posts/fragment", post: post %>
+                <%= render "posts/list", posts: [post], short: false %>
             </div>
             <% comments.each do |comment| %>
                 <%= render "comments/single_comment", comment: comment %>
