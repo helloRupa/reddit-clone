@@ -16,6 +16,15 @@
 
     <div>
         <label>Select 1-3 subs to post in:</label>
+
+        <input list="sub-options" id="sub-choices">
+        <datalist id="sub-options">
+            <% subs.each do |sub| %>
+                <option data-subid="sub_<%= sub.id %>" value="<%= sub.title %>">
+            <% end %>
+        </datalist>
+
+
         <input type="hidden" name="post[sub_ids][]" value="">
         <% subs.each do |sub| %>
             <% checked = params[:sub_id].to_i == sub.id || post.subs.include?(sub) %>
@@ -29,3 +38,6 @@
         <%= form.submit "Save" %>
     </div>
 <% end %>
+
+
+<%= javascript_include_tag 'components/post_form' %>
