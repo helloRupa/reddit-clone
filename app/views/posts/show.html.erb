@@ -21,6 +21,7 @@
     <p><%= @post.content %></p>
 
     <p><%= @post.comments.size %> comments</p>
+    <p><%= upvote_percentage(@post).to_i %>% Upvoted</p>
 
     <% if current_user == @author %>
         <%= link_to "Edit Post", edit_post_url(@post) %>
