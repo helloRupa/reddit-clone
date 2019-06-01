@@ -9,6 +9,6 @@ input.oninput = (e) => {
     if(idx > -1) {
         const checkbox = document.getElementById(options[idx].dataset.subid);
         checkbox.checked = true;
-//         checkbox.parentElement.classList.remove('hide');
+        checkbox.parentElement.classList.remove('hide');
     }
 };

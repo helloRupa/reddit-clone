@@ -24,13 +24,15 @@
             <% end %>
         </datalist>
 
-
+        <label>Selected Subs:</label>
         <input type="hidden" name="post[sub_ids][]" value="">
         <% subs.each do |sub| %>
             <% checked = params[:sub_id].to_i == sub.id || post.subs.include?(sub) %>
-            <input type="checkbox" id="sub_<%=sub.id%>" name="post[sub_ids][]" value="<%= sub.id %>"
-                <%= "checked" if checked %> >
-            <label for="sub_<%=sub.id%>"><%= sub.title %></label>
+            <div class=<%= "hide" unless checked %>>
+                <input type="checkbox" id="sub_<%=sub.id%>" name="post[sub_ids][]" value="<%= sub.id %>"
+                    <%= "checked" if checked %> >
+                <label for="sub_<%=sub.id%>"><%= sub.title %></label>
+            </div>
         <% end %>
     </div>
 
