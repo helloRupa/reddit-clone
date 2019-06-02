@@ -4,11 +4,11 @@
 
 .search-form input {
     border: 1px solid $light-grey;
-    background-color: $dirty-white;
-    border-radius: 4px;
+    background-color: #fff;
+    border-radius: 0;
     width: 100%;
-    font-size: 14px;
-    padding: 6px 12px 5px 38px;
+    font-size: 16px;
+    padding: 8px 12px 8px 42px;
     line-height: 21px;
 }
 
@@ -26,6 +26,19 @@
 .search-form label {
     color: $data-grey;
     position: absolute;
-    top: 6px;
+    top: 8px;
     left: 16px;
+}
+
+@media all and (min-width: 750px) {
+    .search-form input {
+        background-color: $dirty-white;
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 6px 12px 5px 38px;
+    }
+
+    .search-form label {
+        top: 6px;
+    }
 }

@@ -8,6 +8,7 @@ section,
 article,
 ul,
 li,
+form,
 input,
 button,
 a,
@@ -30,4 +31,8 @@ em {
     box-sizing: inherit;
     text-decoration: inherit;
     text-align: inherit;
+}
+
+ul, li {
+    list-style-type: none;
 }

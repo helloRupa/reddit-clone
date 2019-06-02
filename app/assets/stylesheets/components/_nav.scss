@@ -37,56 +37,116 @@ div.logo-img {
     margin-left: 2px;
 }
 
-.sign-up, .log-in, .subs {
+.sign-up, .log-in, .subs, .search-form {
+    display: none;
+}
+
+.mobile-right i {
+    color: $data-grey;
+    font-size: 22px;
     display: inline-block;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    letter-spacing: 0.5px;
-    padding: 5px 0;
+    padding: 5px;
 }
 
-.log-in, .sign-up {
-    width: 120px;
+.mobile-right button:first-of-type {
+    margin-right: 10px;
 }
 
-.log-in {
-    color: $blue;
+.mobile-right ul {
+    width: 100px;
     background-color: #fff;
-    border: 1px solid $blue;
+    font-size: 16px;
+    border: 1px solid $grey-blue;
+    border-radius: 4px;
+    position: absolute;
+    top: 40px;
+    right: 16px;
 }
 
-.log-in:hover {
-    color: $light-blue;
-    border: 1px solid $light-blue;
+.mobile-right ul li a {
+    padding: 8px 0 8px 10px;
+    display: block;
 }
 
-.sign-up {
-    color: #fff;
-    background-color: $blue;
-    border: 1px solid $blue;
+.mobile-right ul li {
+    border-bottom: 1px solid $grey-blue;
 }
 
-.sign-up:hover {
-    background-color: $light-blue;
-    border: 1px solid $light-blue;
+.mobile-right ul li:last-of-type {
+    border-bottom: none;
+}
+
+.mobile-right ul li a:hover {
+    background-color: $light-grey;
 }
 
 .search-form {
-    display: inline-block;
-    flex-grow: 0.3;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 44px;
 }
 
-.subs {
-    width: 80px;
-    background-color: $black;
-    border: 1px solid $black;
-    color: #fff;
-}
+@media all and (min-width: 750px) {
+    .mobile-right {
+        display: none;
+    }
 
-.subs:hover {
-    background-color: $light-black;
-    border: 1px solid $light-black;
+    .sign-up, .log-in, .subs {
+        display: inline-block;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 12px;
+        text-align: center;
+        letter-spacing: 0.5px;
+        padding: 5px 0;
+    }
+    
+    .log-in, .sign-up {
+        width: 120px;
+    }
+    
+    .log-in {
+        color: $blue;
+        background-color: #fff;
+        border: 1px solid $blue;
+    }
+    
+    .log-in:hover {
+        color: $light-blue;
+        border: 1px solid $light-blue;
+    }
+    
+    .sign-up {
+        color: #fff;
+        background-color: $blue;
+        border: 1px solid $blue;
+    }
+    
+    .sign-up:hover {
+        background-color: $light-blue;
+        border: 1px solid $light-blue;
+    }
+    
+    .search-form {
+        display: inline-block;
+        position: relative;
+        flex-grow: 0.3;
+        width: auto;
+        left: 0;
+        top: 0;
+    }
+    
+    .subs {
+        width: 80px;
+        background-color: $black;
+        border: 1px solid $black;
+        color: #fff;
+    }
+    
+    .subs:hover {
+        background-color: $light-black;
+        border: 1px solid $light-black;
+    }
 }

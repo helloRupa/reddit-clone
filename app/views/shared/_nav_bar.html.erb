@@ -1,27 +1,33 @@
 <nav>
-    <div>
+  <div>
     <div class="logo">
-        <a href="<%= root_url %>">
+      <a href="<%= root_url %>">
         <div class="logo-img">
-            <i class="fas fa-bread-slice"></i>
+          <i class="fas fa-bread-slice"></i>
         </div>
         <span>Breddit</span>
-        </a>
-        <!--<%#= link_to "Breddit", root_url %>-->
+      </a>
     </div>
-
     <%= link_to "Subs", subs_url, class: "subs" %>
-    </div>
-
-    <%= render "searches/form" %>
-
-    <div>
+  </div>
+  <%= render "searches/form" %>
+  <div>
     <% if current_user %>
-        <%= link_to current_user.username, user_url(current_user) %>
-        <%= button_to "Log Out", session_url(current_user), method: :delete %>
+      <%= link_to current_user.username, user_url(current_user) %>
+      <%= button_to "Log Out", session_url(current_user), method: :delete %>
     <% else %>
-        <%= link_to "Log In", new_session_url, class: "log-in" %>
-        <%= link_to "Sign Up", new_user_url, class: "sign-up" %>
+      <%= link_to "Log In", new_session_url, class: "log-in" %>
+      <%= link_to "Sign Up", new_user_url, class: "sign-up" %>
     <% end %>
-    </div>
+  </div>
+  <!-- Mobile menu and search icon -->
+  <div class="mobile-right">
+    <button id="expand-search"><i class="fas fa-search"></i></button>
+    <button id="expand-menu"><i class="fas fa-hamburger"></i></button>
+    <ul id="mobile-menu" class="hide">
+        <li><%= link_to "Log In", new_session_url %></li>
+        <li><%= link_to "Sign Up", new_user_url %></li>
+        <li><%= link_to "Subs", subs_url %></li>
+    </ul>
+  </div>
 </nav>
