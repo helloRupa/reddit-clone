@@ -1,0 +1,31 @@
+html {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background-color: $grey-blue;
+    margin: auto;
+    color: $black;
+    font-family: IBMPlexSans, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    box-sizing: border-box;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+button, input[type=submit] {
+    cursor: pointer;
+}

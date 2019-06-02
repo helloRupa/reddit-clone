@@ -1,0 +1,92 @@
+header {
+    background-color: #fff;
+    border-bottom: $light-grey;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 18px;
+}
+
+.logo {
+    display: inline-block;
+    margin-right: 16px;
+}
+
+div.logo-img {
+    display: inline-block;
+    background-color: $red;
+    border-radius: 50%;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+}
+
+.logo-img i {
+    padding: 8px 0;
+    color: #fff;
+    font-size: 16px;
+}
+
+.logo span {
+    vertical-align: bottom;
+    bottom: 2px;
+    position: relative;
+    font-size: 22px;
+    margin-left: 2px;
+}
+
+.sign-up, .log-in, .subs {
+    display: inline-block;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    padding: 5px 0;
+}
+
+.log-in, .sign-up {
+    width: 120px;
+}
+
+.log-in {
+    color: $blue;
+    background-color: #fff;
+    border: 1px solid $blue;
+}
+
+.log-in:hover {
+    color: $light-blue;
+    border: 1px solid $light-blue;
+}
+
+.sign-up {
+    color: #fff;
+    background-color: $blue;
+    border: 1px solid $blue;
+}
+
+.sign-up:hover {
+    background-color: $light-blue;
+    border: 1px solid $light-blue;
+}
+
+.search-form {
+    display: inline-block;
+    flex-grow: 0.3;
+}
+
+.subs {
+    width: 80px;
+    background-color: $black;
+    border: 1px solid $black;
+    color: #fff;
+}
+
+.subs:hover {
+    background-color: $light-black;
+    border: 1px solid $light-black;
+}

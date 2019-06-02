@@ -1,0 +1,31 @@
+.search-form div {
+    position: relative;
+}
+
+.search-form input {
+    border: 1px solid $light-grey;
+    background-color: $dirty-white;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 14px;
+    padding: 6px 12px 5px 38px;
+    line-height: 21px;
+}
+
+.search-form input:hover {
+    border: 1px solid $blue;
+    background-color: #fff;
+    cursor: text;
+}
+
+.search-form input:focus {
+    border: 1px solid $blue;
+    background-color: #fff;
+}
+
+.search-form label {
+    color: $data-grey;
+    position: absolute;
+    top: 6px;
+    left: 16px;
+}

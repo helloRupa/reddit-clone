@@ -1,4 +1,7 @@
-<form action="<%= search_url %>" method="get">
-    <input type="text" name="query" id="search" placeholder="Search">
+<form action="<%= search_url %>" method="get" class="search-form">
+    <div>
+        <label for="search"><i class="fas fa-search"></i></label>
+        <input type="text" name="query" id="search" placeholder="Search bReddit">
+    </div>
     <input type="submit" value="GO" class="hide">
 </form>

@@ -1,15 +1,27 @@
-<nav class="left-nav">
-    <%= link_to "RedditClone", root_url %>
-    <%= link_to "Subs", subs_url %>
-    <%= render "searches/form" %>
-</nav>
+<nav>
+    <div>
+    <div class="logo">
+        <a href="<%= root_url %>">
+        <div class="logo-img">
+            <i class="fas fa-bread-slice"></i>
+        </div>
+        <span>Breddit</span>
+        </a>
+        <!--<%#= link_to "Breddit", root_url %>-->
+    </div>
 
-<nav class="right-nav">
+    <%= link_to "Subs", subs_url, class: "subs" %>
+    </div>
+
+    <%= render "searches/form" %>
+
+    <div>
     <% if current_user %>
         <%= link_to current_user.username, user_url(current_user) %>
         <%= button_to "Log Out", session_url(current_user), method: :delete %>
     <% else %>
-        <%= link_to "Log In", new_session_url %>
-        <%= link_to "Sign Up", new_user_url %>
+        <%= link_to "Log In", new_session_url, class: "log-in" %>
+        <%= link_to "Sign Up", new_user_url, class: "sign-up" %>
     <% end %>
+    </div>
 </nav>
