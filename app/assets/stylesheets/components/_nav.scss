@@ -37,11 +37,11 @@ div.logo-img {
     margin-left: 2px;
 }
 
-.sign-up, .log-in, .subs, .search-form {
+.sign-up, .log-in, .subs, .user-icon {
     display: none;
 }
 
-.mobile-right i {
+.mobile-right i, .user-icon i {
     color: $data-grey;
     font-size: 22px;
     display: inline-block;
@@ -53,7 +53,8 @@ div.logo-img {
 }
 
 .mobile-right ul {
-    width: 100px;
+    width: auto;
+    min-width: 150px;
     background-color: #fff;
     font-size: 16px;
     border: 1px solid $grey-blue;
@@ -63,8 +64,8 @@ div.logo-img {
     right: 16px;
 }
 
-.mobile-right ul li a {
-    padding: 8px 0 8px 10px;
+.mobile-right ul li a, .mobile-right form {
+    padding: 8px 10px;
     display: block;
 }
 
@@ -76,15 +77,28 @@ div.logo-img {
     border-bottom: none;
 }
 
-.mobile-right ul li a:hover {
+.mobile-right ul li a:hover, .mobile-right form:hover {
     background-color: $light-grey;
 }
 
 .search-form {
     width: 100%;
     position: absolute;
-    left: 0;
+    left: 100%;
     top: 44px;
+    transition: left 250ms;
+}
+
+.mobile-right .fa-user {
+    font-size: 14px;
+}
+
+nav input[type="submit"] {
+    width: 100%;
+}
+
+.slide-left {
+    left: 0;
 }
 
 @media all and (min-width: 750px) {
@@ -103,7 +117,7 @@ div.logo-img {
         padding: 5px 0;
     }
     
-    .log-in, .sign-up {
+    .log-in, .sign-up, nav input[type="submit"] {
         width: 120px;
     }
     
@@ -116,6 +130,10 @@ div.logo-img {
     .log-in:hover {
         color: $light-blue;
         border: 1px solid $light-blue;
+    }
+
+    nav form, .user-icon {
+        display: inline-block;
     }
     
     .sign-up {
@@ -148,5 +166,10 @@ div.logo-img {
     .subs:hover {
         background-color: $light-black;
         border: 1px solid $light-black;
+    }
+
+    .user-icon {
+        margin-right: 16px;
+        vertical-align: bottom;
     }
 }

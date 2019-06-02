@@ -4,7 +4,7 @@ const menuBtn = document.getElementById('expand-menu');
 const mobileMenu = document.getElementById('mobile-menu');
 
 searchBtn.onclick = () => {
-    searchForm.classList.toggle('show');
+    searchForm.classList.toggle('slide-left');
 };
 
 menuBtn.onclick = () => {

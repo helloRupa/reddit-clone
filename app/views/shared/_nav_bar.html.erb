@@ -13,8 +13,8 @@
   <%= render "searches/form" %>
   <div>
     <% if current_user %>
-      <%= link_to current_user.username, user_url(current_user) %>
-      <%= button_to "Log Out", session_url(current_user), method: :delete %>
+      <a href="<%= user_url(current_user) %>", class="user-icon"><i class="fas fa-user"></i></a>
+      <%= button_to "Log Out", session_url(current_user), method: :delete, class: "log-in" %>
     <% else %>
       <%= link_to "Log In", new_session_url, class: "log-in" %>
       <%= link_to "Sign Up", new_user_url, class: "sign-up" %>
@@ -25,8 +25,14 @@
     <button id="expand-search"><i class="fas fa-search"></i></button>
     <button id="expand-menu"><i class="fas fa-hamburger"></i></button>
     <ul id="mobile-menu" class="hide">
-        <li><%= link_to "Log In", new_session_url %></li>
-        <li><%= link_to "Sign Up", new_user_url %></li>
+        <% if current_user %>
+          <li><a href="<%= user_url(current_user) %>"><i class="fas fa-user"></i> <%= current_user.username %></a></li>
+          <li><%= button_to "Log Out", session_url(current_user), method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Log In", new_session_url %></li>
+          <li><%= link_to "Sign Up", new_user_url %></li>
+        <% end %>
+        
         <li><%= link_to "Subs", subs_url %></li>
     </ul>
   </div>
