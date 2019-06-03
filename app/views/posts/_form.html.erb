@@ -33,7 +33,7 @@
             <label>Selected Subs:</label>
             <input type="hidden" name="post[sub_ids][]" value="">
             <% subs.each do |sub| %>
-                <% checked = params[:sub_id].to_i == sub.id || post.subs.include?(sub) %>
+                <% checked = params[:sub_id].to_i == sub.id || post_subs.include?(sub.id) %>
                 <div class=<%= "hide" unless checked %>>
                     <input type="checkbox" id="sub_<%=sub.id%>" name="post[sub_ids][]" value="<%= sub.id %>"
                         <%= "checked" if checked %> >
@@ -47,6 +47,5 @@
         <%= form.submit "Save" %>
     </div>
 <% end %>
-
 
 <%= javascript_include_tag 'components/post_form' %>
