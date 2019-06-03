@@ -1,15 +1,27 @@
 <% @title = 'Fake Email' %>
 
-<h1>Welcome to RedditClone, <%= @user.username %>!</h1>
+<div class="form login email">
 
-<p>Before you can use this site, you must activate your account. <%= link_to "Activate Now!", @url %></p>
+  <div class="art"></div>
 
-<p>Thanks for joining. Have fun and be safe!</p>
-<p>- The RedditClone Team</p>
+  <div class="form-container">
+    <div class="logo-img">
+      <i class="fas fa-bread-slice"></i>
+    </div>
 
-<div class="notice">
-    <p>
+    <h1>Welcome to Breddit: a Reddit clone, <%= @user.username %>!</h1>
+
+    <p>Before you can use this site, you must activate your account. <%= link_to "Activate Now!", @url %></p>
+
+    <p>Thanks for joining. Have fun and be safe!</p>
+
+    <p>- The Breddit Team</p>
+
+    <div class="notice">
+      <p>
         It is a bad idea to activate accounts this way. Always send this link in a text or email.
         We are showing this message here due to Heroku deployment compatibility.
-    </p>
+      </p>
+    </div>
+  </div>
 </div>
