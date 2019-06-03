@@ -29,6 +29,12 @@
     position: relative;
 }
 
+.form input {
+    text-align: left;
+    width: 100%;
+    padding: 10px 24px;
+}
+
 .form input[type="password"] {
     border-top: 1px solid $grey-blue;
     border-bottom: 1px solid $grey-blue;
@@ -38,10 +44,12 @@
     border-top: 1px solid $grey-blue;
 }
 
-.form input {
-    text-align: left;
-    width: 100%;
-    padding: 10px 24px;
+.form input[type="text"]:disabled {
+    color: $data-grey;
+}
+
+.form input[type="text"]:disabled:hover {
+    background-color: #fff;
 }
 
 .form input[type="password"]:hover, .form input[type="text"]:hover {
@@ -75,6 +83,26 @@
     letter-spacing: 0.5px;
     top: 0;
     left: 10px;
+}
+
+.form textarea {
+    width: 100%;
+    height: 200px;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 16px;
+    background-color: #fff;
+    border-left: 1px solid $light-grey;
+    border-right: 1px solid $light-grey;
+}
+
+.form textarea:hover, .form textarea:focus {
+    border-top: 1px solid $blue;
+    border-color: $blue;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
 }
 
 @media all and (min-width: 500px) {
@@ -134,7 +162,17 @@
         display: block;
     }
 
-    .form input::placeholder {
+    .form input::placeholder, .form textarea::placeholder {
         color: transparent;
+    }
+
+    .form input[type="text"]:disabled:hover {
+        background-color: $dirty-white;
+    }
+
+    .form textarea {
+        border: 1px solid $light-grey;
+        border-radius: 4px;
+        padding-top: 24px;
     }
 }

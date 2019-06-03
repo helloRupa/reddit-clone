@@ -6,29 +6,6 @@
     border-bottom: 1px solid $light-grey;
 }
 
-.sub-page input[type="text"]:disabled {
-    color: $data-grey;
-}
-
-.sub-page input[type="text"]:disabled:hover {
-    background-color: #fff;
-}
-
-.sub-page textarea {
-    width: 100%;
-    height: 200px;
-    text-align: left;
-    padding: 24px;
-    background-color: #fff;
-    border-left: 1px solid $light-grey;
-    border-right: 1px solid $light-grey;
-}
-
-.sub-page textarea:hover, .sub-page textarea:focus {
-    border-top: 1px solid $blue;
-    border-color: $blue;
-}
-
 @media all and (min-width: 750px) {
     .sub-page {
         position: relative;
@@ -38,14 +15,5 @@
         margin-top: 32px;
         padding-top: 16px;
         padding-bottom: 16px;
-    }
-
-    .sub-page input[type="text"]:disabled:hover {
-        background-color: $dirty-white;
-    }
-
-    .sub-page textarea {
-        border: 1px solid $light-grey;
-        border-radius: 4px;
     }
 }

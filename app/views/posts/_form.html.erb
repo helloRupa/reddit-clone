@@ -1,41 +1,46 @@
 <%= form_with model: post, local: true do |form| %>
     <div>
         <%= label :post, :title %>
-        <%= form.text_field :title, minlength: MIN_POST, maxlength: MAX_POST, required: true %>
+        <%= form.text_field :title, minlength: MIN_POST, maxlength: MAX_POST, required: true, placeholder: "Title" %>
     </div>
 
     <div>
         <%= label :post, :url %>
-        <%= form.text_field :url %>
+        <%= form.text_field :url, placeholder: "Url" %>
     </div>
 
     <div>
         <%= label :post, :content %>
-        <%= form.text_area :content %>
+        <%= form.text_area :content, placeholder: "Content" %>
     </div>
 
     <div>
-        <label for="sub-choices">Select 1-3 subs to post in:</label>
-        <div id="no-match" class="invisible">Sub does not exist</div>
-        <input list="sub-options" id="sub-choices">
-        <button id="add-sub">+</button>
-        
-        <datalist id="sub-options">
-            <% subs.each do |sub| %>
-                <option data-subid="sub_<%= sub.id %>" value="<%= sub.title %>">
-            <% end %>
-        </datalist>
-
-        <label>Selected Subs:</label>
-        <input type="hidden" name="post[sub_ids][]" value="">
-        <% subs.each do |sub| %>
-            <% checked = params[:sub_id].to_i == sub.id || post.subs.include?(sub) %>
-            <div class=<%= "hide" unless checked %>>
-                <input type="checkbox" id="sub_<%=sub.id%>" name="post[sub_ids][]" value="<%= sub.id %>"
-                    <%= "checked" if checked %> >
-                <label for="sub_<%=sub.id%>"><%= sub.title %></label>
+        <div>
+            <div id="no-match" class="no-match invisible">Sub does not exist</div>
+            <div class="sub-options">
+                <label for="sub-choices">Select 1-3 subs to post in:</label>
+                <input list="sub-options" id="sub-choices" type="text" placeholder="Find sub">
+                <button id="add-sub">+</button>
             </div>
-        <% end %>
+            <datalist id="sub-options">
+                <% subs.each do |sub| %>
+                    <option data-subid="sub_<%= sub.id %>" value="<%= sub.title %>">
+                <% end %>
+            </datalist>
+        </div>
+
+        <div class="selected-subs">
+            <label>Selected Subs:</label>
+            <input type="hidden" name="post[sub_ids][]" value="">
+            <% subs.each do |sub| %>
+                <% checked = params[:sub_id].to_i == sub.id || post.subs.include?(sub) %>
+                <div class=<%= "hide" unless checked %>>
+                    <input type="checkbox" id="sub_<%=sub.id%>" name="post[sub_ids][]" value="<%= sub.id %>"
+                        <%= "checked" if checked %> >
+                    <label for="sub_<%=sub.id%>"><%= sub.title %></label>
+                </div>
+            <% end %>
+        </div>
     </div>
 
     <div>
