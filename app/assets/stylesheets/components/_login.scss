@@ -68,6 +68,13 @@
 
 .login label {
     display: none;
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    top: 0;
+    left: 10px;
 }
 
 .login .art {
@@ -144,13 +151,6 @@
 
     .login label {
         display: block;
-        position: absolute;
-        text-transform: uppercase;
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: 0.5px;
-        top: 0;
-        left: 10px;
     }
 
     .login input::placeholder {

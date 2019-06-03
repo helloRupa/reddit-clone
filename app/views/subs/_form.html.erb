@@ -3,11 +3,11 @@
     <div>
         <%= label :sub, :title %>
         <%= form.text_field :title, minlength: MIN_TITLE, maxlength: MAX_TITLE, required: true,
-            disabled: sub.persisted? %>
+            placeholder: "Title", disabled: sub.persisted? %>
     </div>
 
     <div>
-        <%= label :sub, :description %>
+        <%= label :sub, :description, class: "show" %>
         <%= form.text_area :description, required: true %>
     </div>
 
