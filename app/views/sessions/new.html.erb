@@ -1,24 +1,33 @@
 <% @title = "Log In" %>
 <div class="login form">
+
   <div class="art"></div>
+
   <div class="form-container">
+
     <div class="logo-img">
       <i class="fas fa-bread-slice"></i>
     </div>
+
     <h1>Sign in</h1>
+
     <%= link_to "New user? Sign Up!", new_user_url %>
+
     <% if @url %>
-      <%= link_to "Please activate your account.", @url %>
+      <div class="activate"><%= link_to "Activate your account.", @url %></div>
     <% end %>
-    <%= form_with model: @user, url: session_url, local: true do |form| %>
+
+    <%= form_with model: @user, url: session_url, method: :post, local: true do |form| %>
       <div>
         <%= label :user, :email %>
         <%= form.text_field :email, value: @user.email, required: true, placeholder: "Email" %>
       </div>
+
       <div>
         <%= label :user, :password %>
         <%= form.password_field :password, required: true, placeholder: "Password" %>
       </div>
+
       <div>
         <%= form.submit "Sign In" %>
       </div>

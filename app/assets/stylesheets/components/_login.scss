@@ -2,6 +2,12 @@
     display: none;
 }
 
+.activate {
+    text-transform: uppercase;
+    background-color: #e1f1ff;
+    margin-top: 16px;
+}
+
 @media all and (min-width: 750px) {
     .login .art {
         display: block;
@@ -16,5 +22,10 @@
 
     .login .form-container {
         margin-left: 130px;
+    }
+
+    .activate {
+        width: 390px; 
+        padding-left: 10px;
     }
 }

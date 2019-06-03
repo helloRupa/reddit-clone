@@ -42,3 +42,20 @@ main a {
 main a:hover {
     text-decoration: underline;
 }
+
+.error, .notice {
+    text-align: center;
+    padding: 2px 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error {
+    color: #b31111;
+    background-color: #ffabab;
+}
+
+.notice {
+    color: #0b5796;
+    background-color: #e1f1ff;
+}

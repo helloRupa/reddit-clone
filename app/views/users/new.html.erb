@@ -13,7 +13,7 @@
 
     <%= link_to "Already own an account? Log in!", new_session_url %>
 
-    <%= form_with model: @user, local: true do |form| %>
+    <%= form_with model: @user, method: :post, local: true do |form| %>
       <div>
         <%= label :user, :email %>
         <%= form.text_field :email, value: @user.email, required: true, placeholder: "Email" %>
