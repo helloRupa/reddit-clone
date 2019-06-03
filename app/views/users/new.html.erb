@@ -1,26 +1,37 @@
 <% @title = "Register" %>
+<div class="login register">
 
-<h1>Register</h1>
+  <div class="art"></div>
 
-<%= form_with model: @user, local: true do |form| %>
-    <div>
+  <div class="form-container">
+
+    <div class="logo-img">
+      <i class="fas fa-bread-slice"></i>
+    </div>
+
+    <h1>Sign Up</h1>
+
+    <%= link_to "Already own an account? Log in!", new_session_url %>
+
+    <%= form_with model: @user, local: true do |form| %>
+      <div>
         <%= label :user, :email %>
-        <%= form.text_field :email, value: @user.email, required: true %>
-    </div>
+        <%= form.text_field :email, value: @user.email, required: true, placeholder: "Email" %>
+      </div>
 
-    <div>
+      <div>
         <%= label :user, :username %>
-        <%= form.text_field :username, value: @user.username, minlength: MIN_UNAME, maxlength: MAX_UNAME, required: true %>
-    </div>
+        <%= form.text_field :username, value: @user.username, minlength: MIN_UNAME, maxlength: MAX_UNAME, required: true, placeholder: "Username" %>
+      </div>
 
-    <div>
+      <div>
         <%= label :user, :password %>
-        <%= form.password_field :password, minlength: MIN_PWORD, required: true %>
-    </div>
+        <%= form.password_field :password, minlength: MIN_PWORD, required: true, placeholder: "Password" %>
+      </div>
 
-    <div>
-        <%= form.submit "Sign Up" %>
-    </div>
-<% end %>
-
-<p>Already signed up? <%= link_to "Log In", new_session_url %></p>
+      <div>
+        <%= form.submit "Register" %>
+      </div>
+    <% end %>
+  </div>
+</div>

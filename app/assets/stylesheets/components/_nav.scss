@@ -1,6 +1,6 @@
 header {
     background-color: #fff;
-    border-bottom: $light-grey;
+    border-bottom: 1px solid $light-grey;
 }
 
 nav {
@@ -62,6 +62,7 @@ div.logo-img {
     position: absolute;
     top: 40px;
     right: 16px;
+    z-index: 100;
 }
 
 .mobile-right ul li a, .mobile-right form {
@@ -87,6 +88,7 @@ div.logo-img {
     left: 100%;
     top: 44px;
     transition: left 250ms;
+    z-index: 99;
 }
 
 .mobile-right .fa-user {

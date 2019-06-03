@@ -1,25 +1,27 @@
 <% @title = "Log In" %>
-
-<h1>Log In</h1>
-
-<% if @url %>
-    <div>Please activate your account: <%= link_to "Activation Link", @url %></div>
-<% end %>
-
-<%= form_with model: @user, url: session_url, local: true do |form| %>
-    <div>
+<div class="login">
+  <div class="art"></div>
+  <div class="form-container">
+    <div class="logo-img">
+      <i class="fas fa-bread-slice"></i>
+    </div>
+    <h1>Sign in</h1>
+    <%= link_to "New user? Sign Up!", new_user_url %>
+    <% if @url %>
+      <%= link_to "Please activate your account.", @url %>
+    <% end %>
+    <%= form_with model: @user, url: session_url, local: true do |form| %>
+      <div>
         <%= label :user, :email %>
-        <%= form.text_field :email, value: @user.email, required: true %>
-    </div>
-
-    <div>
+        <%= form.text_field :email, value: @user.email, required: true, placeholder: "Email" %>
+      </div>
+      <div>
         <%= label :user, :password %>
-        <%= form.password_field :password, required: true %>
-    </div>
-
-    <div>
-        <%= form.submit "Log In" %>
-    </div>
-<% end %>
-
-<p>Need an account? Why not <%= link_to "Sign Up", new_user_url %>!
+        <%= form.password_field :password, required: true, placeholder: "Password" %>
+      </div>
+      <div>
+        <%= form.submit "Sign In" %>
+      </div>
+    <% end %>
+  </div>
+</div>
