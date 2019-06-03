@@ -1,13 +1,13 @@
-.sub-page {
+.sub {
     padding-top: 12px;
 }
 
-.sub-page input[type="text"], .sub-page textarea {
+.sub input[type="text"], .sub textarea {
     border-bottom: 1px solid $light-grey;
 }
 
 @media all and (min-width: 750px) {
-    .sub-page {
+    .sub {
         margin-top: 32px;
         padding-top: 16px;
         padding-bottom: 16px;
