@@ -165,7 +165,7 @@ main a:hover {
 }
 
 .url-render {
-    max-height: 350px;
+    max-height: 300px;
     overflow: hidden;
 }
 
@@ -175,4 +175,22 @@ main a:hover {
 
 aside header {
     border: none;
+}
+
+.page {
+    width: 95%;
+    margin: 32px auto;
+}
+
+.quote {
+    border-left: 3px solid $data-grey;
+    margin: 10px 0 10px 16px;
+    padding: 5px;
+    font-size: 13px;
+    color: $data-grey;
+}
+
+.quote a {
+    color: $data-grey;
+    font-weight: 500;
 }

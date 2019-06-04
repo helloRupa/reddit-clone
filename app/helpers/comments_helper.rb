@@ -27,7 +27,8 @@ module CommentsHelper
         color = 'blue'
         str += "#{'</div>' unless idx.zero?}<div class=\"parent\">#{replies_btn if hash.key?(comment.id)}"
       end
-      str += "<div class=\"indent flat #{color} container #{display if hide}\">#{parent_link(parent, color)}#{render("comments/single_comment", comment: comment)}</div>"
+      # str += "<div class=\"indent flat #{color} container #{display if hide}\">#{parent_link(parent, color)}#{render("comments/single_comment", comment: comment)}</div>"
+      str += "<div class=\"indent flat #{color} container #{display if hide}\">#{render("comments/single_comment", comment: comment, quote: parent_link(parent, color))}</div>"
       str += flat_comments(hash, comment.id, color, comment, hide)
       color = 'red'
     end
@@ -40,8 +41,8 @@ module CommentsHelper
 
   def parent_link(parent, color)
     return nil if parent.nil? || color != 'red'
-    link = link_to('More', comment_url(parent))
-    "<div class=\"quote\">Re: #{parent.quote} - #{link}</div>"
+    link = link_to('More', comment_url(parent), target: "_blank")
+    "<div class=\"quote\">\"#{parent.quote}\" - #{link}</div>"
   end
 
   def threaded_comments(hash, comment_id)

@@ -75,11 +75,11 @@ section.post {
     float: right;
 }
 
-.delete-link {
+.delete-link input[type="submit"] {
     color: $dark-red;
 }
 
-.delete-link:hover {
+.delete-link input[type="submit"]:hover {
     text-decoration: underline;
 }
 
@@ -89,10 +89,12 @@ section.post {
 }
 
 .thoughts textarea {
-    border: 1px solid lightgray;
+    border: 1px solid $light-grey;
     width: 100%;
     height: 150px;
     border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
 }
 
 .save-button {
