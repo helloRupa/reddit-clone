@@ -1,12 +1,18 @@
 <% @title = "All Subs" %>
 
-<h1>All Subs</h1>
-<% if current_user %>
-    <%= link_to "Add New Sub", new_sub_url %>
-<% end %>
+<div class="sub">
+    <div class="heading">
+        <h1>All Subs</h1>
+        <% if current_user %>
+            <%= link_to "Create SubBreddit", new_sub_url, class: "button" %>
+        <% end %>
+    </div>
 
-<% if @subs.empty? %>
-    <p>No subs yet</p>
-<% else %>
-    <%= render "list_all", subs: @subs %>
-<% end %>
+    <% if @subs.empty? %>
+        <p>No subs yet</p>
+    <% else %>
+        <div class="list">
+            <%= render "list_all", subs: @subs %>
+        </div>
+    <% end %>
+</div>

@@ -51,11 +51,22 @@ main a:hover {
 }
 
 .error {
-    color: #b31111;
-    background-color: #ffabab;
+    color: $dark-red;
+    background-color: $light-red;
 }
 
 .notice {
-    color: #0b5796;
-    background-color: #e1f1ff;
+    color: $dark-blue;
+    background-color: $lightest-blue;
+}
+
+.list {
+    width: 95%;
+    margin: 24px auto;
+}
+
+.data {
+    color: $data-grey;
+    font-size: 12px;
+    font-weight: 300;
 }

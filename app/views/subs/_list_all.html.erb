@@ -1,7 +1,8 @@
 <% subs.each do |sub| %>
+    <% member_count = sub.subscriptions.count %>
     <div>
-        <h2><%= link_to sub.title, sub_url(sub) %></h2>
-        <p><%= sub.subscriptions.count %> members</p>
+        <%= link_to "sub/#{sub.title}", sub_url(sub) %> 
+        <span class="data">• <%= member_count %> member<%= member_count == 1 ? "" : "s" %></span>
         <p><%= sub.excerpt %></p>
     </div>
 <% end %>

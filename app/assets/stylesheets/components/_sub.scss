@@ -1,0 +1,95 @@
+.sub.form {
+    padding-top: 12px;
+}
+
+.sub input[type="text"], .sub textarea {
+    border-bottom: 1px solid $light-grey;
+}
+
+.sub .heading {
+    display: flex;
+    justify-content: flex-end;
+    padding: 18px;
+}
+
+.sub .button {
+    background-color: $orange;
+    color: #fff;
+    padding: 5px 0;
+    border-radius: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    width: 190px;
+    text-align: center;
+}
+
+.sub .button:hover {
+    background-color: $light-orange;
+}
+
+.sub .heading h1 {
+    display: none;
+}
+
+.sub .list div {
+    background-color: #fff;
+    padding: 16px;
+    position: relative;
+    border-left: 1px solid $data-grey;
+    border-right: 1px solid $data-grey;
+}
+
+.sub .list div::after {
+    content: "";
+    display: block;
+    background-color: $light-grey;
+    height: 1px;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sub .list a {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 16px;
+}
+
+.sub .list div:first-of-type {
+    border-radius: 4px 4px 0 0;
+    border-top: 1px solid $data-grey;
+}
+
+.sub .list div:last-of-type {
+    border-radius: 0 0 4px 4px;
+    border-bottom: 1px solid $data-grey;
+}
+
+@media all and (min-width: 750px) {
+    .sub.form {
+        margin-top: 32px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .sub .heading h1 {
+        display: block;
+        padding: 5px 0;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .sub .heading {
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 24px;
+        border-bottom: 1px solid $light-grey;
+    }
+}
