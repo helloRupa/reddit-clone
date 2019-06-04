@@ -27,7 +27,7 @@ module CommentsHelper
         color = 'blue'
         str += "#{'</div>' unless idx.zero?}<div class=\"parent\">#{replies_btn if hash.key?(comment.id)}"
       end
-      str += "<div class=\"indent flat #{color} #{display if hide}\">#{parent_link(parent, color)}#{render("comments/single_comment", comment: comment)}</div>"
+      str += "<div class=\"indent flat #{color} container #{display if hide}\">#{parent_link(parent, color)}#{render("comments/single_comment", comment: comment)}</div>"
       str += flat_comments(hash, comment.id, color, comment, hide)
       color = 'red'
     end

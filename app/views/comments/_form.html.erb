@@ -3,11 +3,11 @@
     <input type="hidden", name="comment[parent_comment_id]", value="<%= parent_comment_id %>">
 
     <div>
-        <%= form.label :content, "Add Comment" %>
+        <!--<%#= form.label :content, "Add Comment" %>-->
         <%= form.text_area :content %>
     </div>
 
     <div>
-        <%= form.submit "Save" %>
+        <%= form.submit "Save", class: "save-button" %>
     </div>
 <% end %>

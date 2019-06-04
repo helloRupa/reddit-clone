@@ -6,12 +6,8 @@
     margin-left: 15px;
 }
 
-// .comments > div {
-//     margin-left: 0;
-// }
-
 .parent {
-    border: 1px solid black;
+    // border: 1px solid black;
 }
 
 .parent div:first-of-type {
@@ -32,4 +28,38 @@
 
 .red {
     background-color: #ffcece;
+}
+
+
+
+
+.comments {
+    width: 95%;
+    margin: auto;
+}
+
+.indent.flat {
+    margin-left: 25px;
+}
+
+.show-replies {
+    float: right;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: $blue;
+    background-color: #fff;
+    border: 1px solid $blue;
+    letter-spacing: 0.5px;
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: 500;
+    z-index: 1;
+    position: relative;
+    top: 10px;
+    right: 10px;
+}
+
+.show-replies:hover {
+    border-color: $light-blue;
+    color: $light-blue;
 }

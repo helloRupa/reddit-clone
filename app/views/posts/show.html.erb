@@ -1,45 +1,55 @@
 <% @title = @post.title %>
 <% @logged_in = !!current_user %>
 
-<section id="p-<%=@post.id%>">
-    <%= button_to '+', upvote_post_url(@post) %>
-    <%= @post.vote_total %>
-    <%= button_to '-', downvote_post_url(@post) %>
-    
-    <h1>Post: <%= @post.title %></h1>
+<div class="post-details">
+<section id="p-<%=@post.id%>" class="container post">
+    <div class="vote-btns">
+        <span class="upvote"><%= button_to '⬆', upvote_post_url(@post) %></span>
+        <span class="vote-number"><%= @post.vote_total %></span>
+        <span class="downvote"><%= button_to '⬇', downvote_post_url(@post) %></span>
+    </div>
 
-    <p>
+    <div class="data">
         Posted by: <%= @author.username == DESTROYED ? DESTROYED : link_to(@author.username, user_url(@author)) %> in: 
             <% @subs.each do |sub| %>
                 <%= link_to sub.title, sub_url(sub) %>
             <% end %>
         <%= @post.time_ago %> ago
-    </p>
+    </div>
 
-    <%= choose_url_format(@post) %>
+    <h1><%= @post.title %></h1>
+
+    <div class="url-render">
+        <%= choose_url_format(@post) %>
+    </div>
 
     <p><%= @post.content %></p>
 
-    <p><%= @post.comments.size %> comments</p>
-    <p><%= upvote_percentage(@post).to_i %>% Upvoted</p>
+    <div class="data">
+        <i class="fas fa-comment-alt"></i> 
+        <span class="heavy"><%= @post.comments.size %> comments</span>
+        <% if current_user == @author %>
+            <span class="heavy"><%= link_to "Edit Post", edit_post_url(@post) %></span>
+            <span class="heavy delete-link"><%= button_to "Delete Post", post_url(@post), method: :delete %></span>
+            <div class="upvote-percentage"><%= upvote_percentage(@post).to_i %>% Upvoted</div>
+        <% end %>
+    </div>
 
-    <% if current_user == @author %>
-        <%= link_to "Edit Post", edit_post_url(@post) %>
-        <%= button_to "Delete Post", post_url(@post), method: :delete %>
-    <% end %>
+    <div class="thoughts">
+        <h2>What are your thoughts?</h2>
+        <% if @logged_in %>
+            <%= render "comments/form", post_id: @post.id, parent_comment_id: nil %>
+        <% else %>
+            <p>Want to join in? Why not <%= link_to "sign up", new_user_url %>!</p>
+        <% end %>
+    </div>
 </section>
 
 <section>
-    <h2>Comments</h2>
-    <% if @logged_in %>
-        <%= render "comments/form", post_id: @post.id, parent_comment_id: nil %>
-    <% else %>
-        <p>Want to join in? Why not <%= link_to "sign up", new_user_url %>!</p>
-    <% end %>
-
     <div class="comments">
         <%= formatted_comments(@comments, nil, 'flat') %>
     </div>
 </section>
+</div>
 
 <%= javascript_include_tag 'components/nested_comments' %>

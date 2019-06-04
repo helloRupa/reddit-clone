@@ -2,7 +2,7 @@
     border-bottom: none;
 }
 
-.post {
+.form.post {
     padding-top: 12px;
 }
 
@@ -54,12 +54,69 @@
     cursor: pointer;
 }
 
+section.post {
+    margin: 32px auto;
+    width: 95%;
+}
+
+.post h2 a {
+    color: inherit;
+}
+
+.post h2 a:hover {
+    text-decoration: none;
+}
+
+.post-details section, .post-details section:hover {
+    border: none;
+}
+
+.upvote-percentage {
+    float: right;
+}
+
+.delete-link {
+    color: $dark-red;
+}
+
+.delete-link:hover {
+    text-decoration: underline;
+}
+
+.thoughts {
+    margin-top: 32px;
+    border-top: 1px solid $light-grey;
+}
+
+.thoughts textarea {
+    border: 1px solid lightgray;
+    width: 100%;
+    height: 150px;
+    border-radius: 4px;
+}
+
+.save-button {
+    background-color: $blue;
+    color: #fff;
+    margin-top: 16px;
+    padding: 5px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.save-button:hover {
+    background-color: $light-blue;
+} 
+
 @media all and (min-width: 750px) {
     #post_title {
         border-bottom: 1px solid $light-grey;
     }
 
-    .post {
+    .form.post {
         margin-top: 32px;
         padding-top: 16px;
         padding-bottom: 16px;
@@ -67,5 +124,9 @@
 
     .sub-options button {
         padding: 10px 16px;
+    }
+
+    .thoughts textarea {
+        width: 50%;
     }
 }

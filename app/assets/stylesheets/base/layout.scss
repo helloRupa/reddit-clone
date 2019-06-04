@@ -19,6 +19,13 @@ body {
     overflow-x: hidden;
 }
 
+h2 {
+    display: block;
+    font-weight: 500;
+    color: $black;
+    margin: 10px 0;
+}
+
 .show {
     display: block !important;
 }
@@ -69,4 +76,103 @@ main a:hover {
     color: $data-grey;
     font-size: 12px;
     font-weight: 300;
+}
+
+.data span::before, span.data::before {
+    content: "•";
+    margin-right: 5px;
+    color: $data-grey;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.data span:first-of-type::before {
+    content: "";
+    margin-right: 0;
+}
+
+.data form {
+    display: inline-block;
+}
+
+.container {
+    border: 1px solid $med-grey;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 16px;
+    position: relative;
+    min-height: 150px;
+    padding-left: 60px;
+}
+
+.container:first-of-type {
+    margin-top: 16px;
+}
+
+.container:hover {
+    border: 1px solid $data-grey;
+}
+
+.container .vote-btns {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    color: $data-grey;
+    font-size: 16px;
+    background-color: $dirty-white;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.container::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.upvote:hover {
+    color: $dark-blue;
+}
+
+.downvote:hover {
+    color: $dark-red;
+}
+
+.vote-number {
+    color: $black;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.container p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.heavy {
+    font-weight: 700;
+}
+
+.fas.fa-comment-alt {
+    margin-right: 3px;
+}
+
+.url-render {
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.url-render iframe {
+    max-width: 90%;
+}
+
+aside header {
+    border: none;
 }

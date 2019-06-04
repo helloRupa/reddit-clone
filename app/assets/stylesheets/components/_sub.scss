@@ -12,6 +12,12 @@
     padding: 18px;
 }
 
+.sub .sub-heading { 
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .sub .button {
     background-color: $orange;
     color: #fff;
@@ -27,12 +33,23 @@
     text-align: center;
 }
 
+.sub .button.small {
+    padding: 3px 10px;
+    font-size: 12px;
+    display: inline-block;
+    width: auto;
+    margin-left: 10px;
+}
+
 .sub .button:hover {
     background-color: $light-orange;
 }
 
 .sub .heading h1 {
     display: none;
+    padding: 5px 0;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .sub .list div {
@@ -71,6 +88,47 @@
     border-bottom: 1px solid $data-grey;
 }
 
+.sub .details {
+    background-color: #fff;
+    border-bottom: 1px solid $data-grey;
+    padding: 24px;
+}
+
+.sub .details .heading {
+    border: none;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.sub .details .button {
+    width: 100px;
+}
+
+.sub .details h1 {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.sub .details p {
+    color: $text-grey;
+    font-size: 16px;
+    width: 100%;
+    margin: 6px 0 10px 0;
+}
+
+.sub .data span {
+    margin-right: 12px;
+}
+
+.sub .post .button {
+    background-color: $blue;
+}
+
+.sub .post .button:hover {
+    background-color: $light-blue;
+}
+
 @media all and (min-width: 750px) {
     .sub.form {
         margin-top: 32px;
@@ -80,9 +138,6 @@
 
     .sub .heading h1 {
         display: block;
-        padding: 5px 0;
-        text-transform: uppercase;
-        font-weight: 600;
     }
 
     .sub .heading {
@@ -91,5 +146,9 @@
         justify-content: space-between;
         padding: 24px;
         border-bottom: 1px solid $light-grey;
+    }
+
+    .sub .details p {
+        width: 66%;
     }
 }

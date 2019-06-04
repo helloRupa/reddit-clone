@@ -1,17 +1,30 @@
 <% posts.each do |post| %>
-    <div id="p-<%= post.id %>">
-        <%= button_to '+', upvote_post_url(post) %>
-        <%= post.vote_total %>
-        <%= button_to '-', downvote_post_url(post) %>
-        
-        <%= link_to post.title, post_url(post) %>
-        Posted by <%= post.author.username == DESTROYED ? DESTROYED : link_to(post.author.username, user_url(post.author)) %> in: 
+    <div id="p-<%= post.id %>" class="container">
+        <div class="vote-btns">
+            <span class="upvote"><%= button_to '⬆', upvote_post_url(post) %></span>
+            <span class="vote-number"><%= post.vote_total %></span>
+            <span class="downvote"><%= button_to '⬇', downvote_post_url(post) %></span>
+        </div>
+
+        <div class="data">
+            Posted by <%= post.author.username == DESTROYED ? DESTROYED : link_to(post.author.username, user_url(post.author)) %> in: 
             <% post.subs.each do |sub| %>
                 <%= link_to sub.title, sub_url(sub) %>
             <% end %>
         <%= post.time_ago %> ago
-        <%= choose_url_format(post) %>
-        <%= short ? post.excerpt : post.long_excerpt %>
-        <p><%= post.comments.size %> comments</p>
+        </div>
+        
+        <h2><%= link_to post.title, post_url(post) %></h2>
+        
+        <div class="url-render">
+            <%= choose_url_format(post) %>
+        </div>
+
+        <p><%= short ? post.excerpt : post.long_excerpt %></p>
+
+        <div class="data">
+            <i class="fas fa-comment-alt"></i> 
+            <span class="heavy"><%= post.comments.size %> comments</span>
+        </div>
     </div>
 <% end %>

@@ -1,8 +1,14 @@
 <% subs.each do |sub| %>
     <% member_count = sub.subscriptions.count %>
     <div>
-        <%= link_to "sub/#{sub.title}", sub_url(sub) %> 
-        <span class="data">• <%= member_count %> member<%= member_count == 1 ? "" : "s" %></span>
+        <span class="sub-heading">
+            <%= link_to "subs/#{sub.title}", sub_url(sub) %> 
+            <span class="data">
+                <%= member_count %> member<%= member_count == 1 ? "" : "s" %>
+                <%= button_to('Join', subscribe_sub_url(sub), class: "button small") if current_user %>
+            </span>
+        </span>
+        
         <p><%= sub.excerpt %></p>
     </div>
 <% end %>
