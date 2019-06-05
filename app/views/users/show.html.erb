@@ -1,20 +1,22 @@
 <% @title = @user.username %>
 
-<h1><%= @user.username %> Profile</h1>
-<p>Joined <%= @user.time_ago %> ago, score: <%= @user.score %> points</p>
+<section class="user-details">
+    <h2>users/<%= @user.username %></h2>
+    <span class="details">Joined <%= @user.time_ago %> ago, score: <%= @user.score %> points</span>
 
-<% unless @subs.empty? %>
-    <% sub_list = @subs.map { |sub| link_to sub.title, sub_url(sub) } %>
-    Moderates: <%= sub_list.join(' ').html_safe %>
-<% end %>
+    <% unless @subs.empty? %>
+        <% sub_list = @subs.map { |sub| link_to sub.title, sub_url(sub) } %>
+        <span class="details"><span class="heavy">Moderates:</span> <%= sub_list.join(' ').html_safe %></span>
+    <% end %>
 
-<% if current_user == @user %>
-    <button id="delete_user">Delete Account</button>
+    <% if current_user == @user %>
+        <button id="delete_user", class="delete-btn">Delete Account</button>
 
-    <%= render "confirm_delete", user: @user %>
-<% end %>
+        <%= render "confirm_delete", user: @user %>
+    <% end %>
+</section>
 
-
+<section class="page users">
 <% mixed_ordered_posts_comments(@posts, @comments).each do |data| %>
     <% if data.is_a?(Array) %>
         <% post, comments = separate_posts_comments(data) %>
@@ -22,15 +24,23 @@
             <div class="post-fragment">
                 <%= render "posts/list", posts: [post], short: false %>
             </div>
+            <div class="comments">
             <% comments.each do |comment| %>
-                <%= render "comments/single_comment", comment: comment %>
+                <div class="container indent flat">
+                    <%= render "comments/single_comment", comment: comment %>
+                </div>
             <% end %>
+            </div>
         </div>
     <% else %>
-        <p>→ <%= link_to data.post.title, post_url(data.post) %></p>
-        <%= render "comments/single_comment", comment: data %>
+        <div class="comments">
+        <div class="container">
+            <%= render "comments/single_comment", comment: data, quote: "→ #{link_to(data.post.title, post_url(data.post))}" %>
+        </div>
+        </div>
     <% end %>
 <% end %>
+</section>
 
-<%= javascript_include_tag 'components/modal' %>
 <%= javascript_include_tag 'components/nested_comments' %>
+<%= javascript_include_tag 'components/modal' %>

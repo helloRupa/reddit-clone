@@ -6,8 +6,12 @@
     margin-left: 15px;
 }
 
-.parent {
-    // border: 1px solid black;
+.comments .main-comment .container {
+    border: 1px solid $light-black;
+}
+
+.comments .main-comment p {
+    font-size: 16px;
 }
 
 .parent div:first-of-type {
@@ -18,17 +22,17 @@
     background-color: #cccccc;
 }
 
-.blue::before, .grey::before, .red::before {
+.talk1::before, .talk2::before, .talk_break::before {
     font-size: 12px;
     padding: 0 6px;
 }
 
-.blue::before, .grey::before {
+.talk1::before, .talk2::before {
     content: "re: ↑";
     background-color: $lightest-blue;
 }
 
-.red::before {
+.talk_break::before {
     content: "re: check quote";
     background-color: $light-purple;
 }
@@ -97,8 +101,46 @@
     font-size: 14px;
 }
 
+.responding-to {
+    background-color: #fff;
+    padding: 24px 24px 12px 24px;
+}
+
+.responding-to > div {
+    margin-bottom: 24px;
+    border-left: 3px solid $text-grey;
+    padding-left: 16px;
+}
+
+.responding-to p {
+    color: $text-grey;
+    font-size: 14px;
+    width: 100%;
+}
+
+.responding-to h2 {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: $text-grey;
+}
+
+.responding-to .container {
+    border: none;
+    margin-left: 25px;
+    padding: 0;
+    min-height: auto;
+}
+
+.responding-to .container .vote-btns, .responding-to .data {
+    display: none;
+}
+
 @media all and (min-width: 750px) {
     .comments textarea {
         width: 50%;
+    }
+
+    .responding-to p {
+        width: 60%;
     }
 }

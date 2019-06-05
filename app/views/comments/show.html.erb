@@ -1,27 +1,33 @@
 <% @title = "Comment" %>
 
-<section id="p-<%=@post.id%>">
+<section id="p-<%=@post.id%>" class="responding-to">
+    <div>
     <h2>
         Responding to Post: <%= link_to @post.title, post_url(@post) %> by <%= link_to @post_author.username, user_url(@post_author) %>
     </h2>
 
     <p><%= @post.excerpt %></p>
     <%= choose_url_format(@post) %>
-</section>
+    </div>
 
-<section>
+    <div>
     <% if @parent_comment %>
         <h2>And to Comment:</h2>
-        <%= render "single_comment", comment: @parent_comment %>
+        <div class="container">
+            <%= render "single_comment", comment: @parent_comment %>
+        </div>
     <% end %>
+    </div>
+</section>
 
+<section class="comments">
     <div class="main-comment">
-        <%= render "single_comment", comment: @comment %>
+        <div class="container">
+            <%= render "single_comment", comment: @comment %>
+        </div>
     </div>
 
-    <div class="comments">
-        <%= formatted_comments(@post.comments, @comment.id, 'flat', false) %>
-    </div>
+    <%= formatted_comments(@post.comments, @comment.id, 'flat', false) %>
 
 </section>
 

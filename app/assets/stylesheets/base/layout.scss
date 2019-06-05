@@ -194,3 +194,47 @@ aside header {
     color: $data-grey;
     font-weight: 500;
 }
+
+.overlay {
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.modal {
+    z-index: 101;
+    width: 90vw;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 24px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.modal h2 {
+    margin: 0 0 6px 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.modal p {
+    padding: 10px 0;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+@media all and (min-width: 750px) {
+    .modal {
+        width: 60%;
+        max-width: 750px;
+    }
+}

@@ -1,31 +1,37 @@
 <% quote ||= nil %>
-    
-    <div id="c-<%=comment.id%>">
-        <div class="vote-btns">
-            <span class="upvote"><%= button_to '⬆', upvote_comment_url(comment) %></span>
-            <span class="vote-number"><%= comment.vote_total %></span>
-            <span class="downvote"><%= button_to '⬇', downvote_comment_url(comment) %></span>
-        </div>
 
-        <div class="data">
-            Posted by <%= comment.author.username == DESTROYED ? DESTROYED : 
-                link_to(comment.author.username, user_url(comment.author)) %> 
-            <%= comment.time_ago %> ago
-        </div>
-
-        <%= quote.html_safe if quote %>
+<div id="c-<%=comment.id%>">
+    <div class="vote-btns">
+        <span class="upvote"><%= button_to '⬆', upvote_comment_url(comment) %></span>
+        <span class="vote-number"><%= comment.vote_total %></span>
+        <span class="downvote"><%= button_to '⬇', downvote_comment_url(comment) %></span>
     </div>
-    <!--<div>Parent: <%#= comment.parent_comment_id %>, Id: <%#= comment.id %></div>-->
-    <p><%= comment.content %></p>
 
-        <div class="data heavy">
-            <span><button class="reply-btn <%= "hide" unless current_user %>" id="comment-<%=comment.id%>">Reply</button></span>
-            <span><%= link_to "Share", comment_url(comment) %></span>
-            <% if current_user && (current_user.id == comment.author_id) %>
-                <span class="heavy delete-link"><%= button_to "Delete", comment_url(comment), method: :delete %></span>
-            <% end %>
-        </div>
-
-    <div class="hide", id="form-<%= comment.id %>">
-        <%= render "comments/form", post_id: comment.post_id, parent_comment_id: comment.id %>
+    <div class="data">
+        Comment by <%= comment.author.username == DESTROYED ? DESTROYED : 
+                link_to(comment.author.username, user_url(comment.author)) %>
+        <%= comment.time_ago %> ago
     </div>
+
+    <% if quote %>
+    <div class="quote">
+        <%= quote.html_safe %>
+    </div>
+    <% end %>
+</div>
+<!--<div>Parent: <%#= comment.parent_comment_id %>, Id: <%#= comment.id %></div>-->
+<p><%= comment.content %></p>
+
+<div class="data heavy">
+    <span><button class="reply-btn <%= "hide" unless current_user %>" id="comment-<%=comment.id%>">Reply</button></span>
+
+    <span><%= link_to "Show", comment_url(comment) %></span>
+
+    <% if current_user && (current_user.id == comment.author_id) %>
+        <span class="heavy delete-link"><%= button_to "Delete", comment_url(comment), method: :delete %></span>
+    <% end %>
+</div>
+
+<div class="hide" , id="form-<%= comment.id %>">
+    <%= render "comments/form", post_id: comment.post_id, parent_comment_id: comment.id %>
+</div>

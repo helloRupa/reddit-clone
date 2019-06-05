@@ -2,7 +2,7 @@
     <h2>Delete Your Account</h2>
     <p>Are you sure you want to delete your account?</p>
     <div class="modal-buttons">
-        <%= button_to "Yes, Delete Me!", user_url(user), method: :delete %>
-        <button id="keep_account">No, I'll Stay</button>
+        <%= button_to "Yes, Delete Me!", user_url(user), method: :delete, class: "delete-btn" %>
+        <button id="keep_account" class="delete-btn stay">No, I'll Stay</button>
     </div>
 </div>
