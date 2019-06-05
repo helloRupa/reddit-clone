@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
   def handle_login(user)
     if user.activated
       login!(user)
-      redirect_to user_url(user)
+      redirect_to root_url
     else
       flash.now[:error] = 'Account requires activation'
       @user = user

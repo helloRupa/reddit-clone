@@ -102,16 +102,17 @@ class User < ApplicationRecord
   end
 
   def self.generate_session_token
-    token = SecureRandom::urlsafe_base64(16)
-
-    token = SecureRandom::urlsafe_base64(16) while User.find_by_session_token(token)
-    token
+    generate_token(:find_by_session_token)
   end
 
   def self.generate_activation_token
+    generate_token(:find_by_activation_token)
+  end
+
+  def self.generate_token(find_by_method)
     token = SecureRandom::urlsafe_base64(16)
 
-    token = SecureRandom::urlsafe_base64(16) while User.find_by_activation_token(token)
+    token = SecureRandom::urlsafe_base64(16) while User.send(find_by_method, token)
     token
   end
 
