@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     user = User.find_by_username(params[:username])
 
     if user.destroy
+      flash[:notice] = 'Your account was deleted'
       redirect_to new_user_url
     else
       flash[:error] = 'Oops, something went wrong and you still exist'
