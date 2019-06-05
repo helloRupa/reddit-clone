@@ -16,7 +16,7 @@
     <% end %>
 </section>
 
-<section class="page users">
+<section class="page users bottom-padding">
 <% mixed_ordered_posts_comments(@posts, @comments).each do |data| %>
     <% if data.is_a?(Array) %>
         <% post, comments = separate_posts_comments(data) %>

@@ -14,7 +14,7 @@
     margin-bottom: 0;
 }
 
-.details {
+.user-details .details {
     color: $text-grey;
     display: block;
     font-size: 14px;
@@ -22,11 +22,11 @@
     margin-bottom: 6px;
 }
 
-.details a {
+.user-details .details a {
     padding: 0 6px;
 }
 
-.details a::before {
+.user-details .details a::before {
     content: "•";
     padding-right: 3px;
     text-decoration: none;
@@ -68,6 +68,10 @@
 .stay:hover {
     border-color: $blue;
     color: $blue;
+}
+
+.users .data span:nth-of-type(2)::before {
+    content: "";
 }
 
 @media all and (max-width: 400px) {

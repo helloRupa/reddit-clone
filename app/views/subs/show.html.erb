@@ -1,6 +1,6 @@
 <% @title = "Sub: #{@sub.title}" %>
 
-<div class="sub">
+<div class="sub bottom-padding">
 <section class="details">
     <div class="heading">
         <h1>subs/<%= @sub.title %></h1>
@@ -19,10 +19,10 @@
             <% end %>
         </span>
 
-    <span><%= @sub.subscriptions.count %> members</span>
-    <% if current_user == @moderator %>
-        <span><%= link_to "Edit Sub", edit_sub_url(@sub) %></span>
-    <% end %>
+        <span><%= @sub.subscriptions.count %> members</span>
+        <% if current_user == @moderator %>
+            <span><%= link_to "Edit Sub", edit_sub_url(@sub) %></span>
+        <% end %>
     </div>
 </section>
 
@@ -34,4 +34,4 @@
         <%= render "posts/list", posts: @posts, short: true %>
      <% end %>
 </section>
-</sub>
+</div>

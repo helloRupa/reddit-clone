@@ -1,0 +1,18 @@
+.query {
+    background-color: #fff;
+    padding: 24px;
+}
+
+.list.users {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid $data-grey;
+    position: relative;
+}
+
+.list.users a {
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+}

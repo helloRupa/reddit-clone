@@ -1,7 +1,7 @@
 <% @title = @post.title %>
 <% @logged_in = !!current_user %>
 
-<div class="post-details">
+<div class="post-details bottom-padding">
 <section id="p-<%=@post.id%>" class="container post">
     <div class="vote-btns">
         <span class="upvote"><%= button_to '⬆', upvote_post_url(@post) %></span>
