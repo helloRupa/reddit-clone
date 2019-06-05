@@ -29,7 +29,7 @@
 <section class="post">
     <%= link_to "Create Post", new_post_url(sub_id: @sub.id), class: "button" %>
     <% if @posts.empty? %>
-        <p>No posts to see here</p>
+        <p class="nothing-posted">No posts to see here</p>
     <% else %>
         <%= render "posts/list", posts: @posts, short: true %>
      <% end %>

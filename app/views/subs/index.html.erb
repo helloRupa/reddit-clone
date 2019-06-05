@@ -9,7 +9,7 @@
     </div>
 
     <% if @subs.empty? %>
-        <p>No subs yet</p>
+        <p class="nothing-posted">No subs yet</p>
     <% else %>
         <div class="list">
             <%= render "list_all", subs: @subs %>

@@ -6,7 +6,7 @@
 
 <div class="sub page bottom-padding">
     <% if [@subs, @users, @posts].all?(&:empty?) %>
-        <p>Sorry, nothing to see here. Try searching for something else.</p>
+        <p class="nothing-posted">Sorry, nothing to see here. Try searching for something else.</p>
     <% else %>
         <% unless @subs.empty? %>
             <div class="list">

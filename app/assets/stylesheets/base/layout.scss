@@ -240,6 +240,12 @@ h2 a {
     color: $black;
 }
 
+.nothing-posted {
+    padding: 10px;
+    background-color: #fff;
+    margin-top: 16px;
+}
+
 @media all and (min-width: 750px) {
     .modal {
         width: 60%;
