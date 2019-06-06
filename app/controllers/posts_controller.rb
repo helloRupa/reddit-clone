@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   def show
     post_data = Post.where(id: params[:id]).includes(comments: [:author, :votes]).create_order
     @post = post_data.first
+    @moderators = @post.moderators.pluck(:id)
     @comments = @post.comments
     @author = @post.author
     @subs = @post.subs.alpha_order(:title).select(:id, :title)
@@ -56,7 +57,7 @@ class PostsController < ApplicationController
     @post = Post.find_by_id(params[:id])
 
     if @post.destroy
-      redirect_to subs_url
+      redirect_to root_url
     else
       flash[:error] = "Oops, something went wrong. Post still exists."
       render :show
@@ -79,7 +80,7 @@ class PostsController < ApplicationController
 
   def wrong_user
     post = Post.find_by_id(params[:id])
-    return if post.author == current_user
+    return if post.author == current_user || post.moderators.include?(current_user)
     redirect_to post_url(post)
   end
 

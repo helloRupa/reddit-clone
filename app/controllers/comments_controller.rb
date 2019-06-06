@@ -50,7 +50,9 @@ class CommentsController < ApplicationController
 
   def wrong_user
     comment = Comment.find_by_id(params[:id])
-    return if current_user.id == comment.author_id
+    moderators = comment.post.moderators.pluck(:id)
+    moderators << current_user.id
+    return if moderators.include?(current_user.id)
     redirect_to request.referrer
   end
 

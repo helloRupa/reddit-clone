@@ -28,11 +28,11 @@
     <div class="data">
         <i class="fas fa-comment-alt"></i> 
         <span class="heavy"><%= @post.comments.size %> Comments</span>
-        <% if current_user == @author %>
+        <% if current_user == @author || @moderators.include?(current_user.id) %>
             <span class="heavy"><%= link_to "Edit Post", edit_post_url(@post) %></span>
             <span class="heavy delete-link"><%= button_to "Delete Post", post_url(@post), method: :delete %></span>
-            <div class="upvote-percentage"><%= upvote_percentage(@post).to_i %>% Upvoted</div>
         <% end %>
+        <div class="upvote-percentage"><%= upvote_percentage(@post).to_i %>% Upvoted</div>
     </div>
 
     <div class="thoughts">
