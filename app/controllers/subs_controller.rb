@@ -56,7 +56,7 @@ class SubsController < ApplicationController
     else
       flash[:error] = subscription.errors.full_messages
     end
-    redirect_to sub_url(sub)
+    redirect_to request.referrer
   end
 
   private
