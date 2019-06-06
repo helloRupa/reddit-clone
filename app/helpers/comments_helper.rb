@@ -6,19 +6,11 @@ module CommentsHelper
     hash
   end
 
-  # def formatted_comments(comments, start_key, type = 'classic', hide = true)
-  #   return nil if comments.empty?
-  #   hash = comments_hash(comments)
-
-  #   return threaded_comments(hash, start_key).html_safe if type == 'classic'
-  #   flat_comments(hash, start_key, 'blue', hash[start_key].first, hide).html_safe
-  # end
-
   def formatted_comments(comments, start_key, type = 'classic', hide = true)
     return nil if comments.empty?
     hash = comments_hash(comments)
 
-    return threaded_comments(hash, start_key).html_safe if type == 'classic'
+    return "<div class=\"threaded\">#{threaded_comments(hash, start_key)}</div>".html_safe if type == 'classic'
     flat_comments(hash, start_key, hash[start_key].first, hide).html_safe
   end
 
@@ -42,26 +34,6 @@ module CommentsHelper
     str
   end
 
-  # def flat_comments(hash, comment_id, color = 'blue', parent = nil, hide = true)
-  #   str = ''
-  #   return str unless hash.key?(comment_id)
-
-  #   color = ['blue', 'red'].include?(color) ? 'grey' : 'blue'
-
-  #   hash[comment_id].each_with_index do |comment, idx|
-  #     display = 'hide'
-  #     if comment_id.nil?
-  #       display = nil
-  #       color = 'blue'
-  #       str += "#{'</div>' unless idx.zero?}<div class=\"parent\">#{replies_btn if hash.key?(comment.id)}"
-  #     end
-  #     str += "<div class=\"indent flat #{color} container #{display if hide}\">#{render("comments/single_comment", comment: comment, quote: parent_link(parent, color))}</div>"
-  #     str += flat_comments(hash, comment.id, color, comment, hide)
-  #     color = 'red'
-  #   end
-  #   str
-  # end
-
   def replies_btn
     '<button class="show-replies">Replies</button>'
   end
@@ -71,12 +43,6 @@ module CommentsHelper
     link = link_to('More', comment_url(parent), target: "_blank")
     "\"#{parent.quote}\" - #{link}"
   end
-
-  # def parent_link(parent, color)
-  #   return nil if parent.nil? || color != 'red'
-  #   link = link_to('More', comment_url(parent), target: "_blank")
-  #   "<div class=\"quote\">\"#{parent.quote}\" - #{link}</div>"
-  # end
 
   def threaded_comments(hash, comment_id)
     str = ''

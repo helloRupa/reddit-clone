@@ -2,6 +2,35 @@
     margin-left: 15px;
 }
 
+.threaded {
+    background-color: #fff;
+    padding: 16px 0;
+}
+
+.threaded .indent {
+    position: relative;
+}
+
+.threaded p, .threaded .data {
+    margin-left: 50px;
+}
+
+.threaded .data.heavy {
+    margin-bottom: 16px;
+}
+
+.threaded .vote-btns {
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: $data-grey;
+}
+
 .comments .main-comment .container {
     border: 1px solid $light-black;
 }
