@@ -1,5 +1,5 @@
 # Reddit Clone
-Ruby 2.5.1, Rails 5.2.3
+Ruby 3.3.4, Rails 6.0.4.8
 
 https://cryptic-cove-63443.herokuapp.com/
 
@@ -30,3 +30,9 @@ There are 2 comment styles available in the app code: classic and flat. The app 
 Classic comments are similar to Reddit's threaded comments. They have not yet been styled however, though the threading is visible.
 
 The method #formatted_comments can be found in the comments helper.
+
+## Run Project
+1. `bundle install`
+2. `bundle exec rails db:create`
+3. `bundle exec rails db:seed`
+4. `rails s`
