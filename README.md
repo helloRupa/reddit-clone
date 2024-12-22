@@ -1,7 +1,7 @@
 # Reddit Clone
 Ruby 3.3.4, Rails 6.0.4.8
 
-https://cryptic-cove-63443.herokuapp.com/
+https://guarded-crag-59035-77bb2fd22b6c.herokuapp.com/
 
 ## Features
 - Account creation and deletion
@@ -34,5 +34,6 @@ The method #formatted_comments can be found in the comments helper.
 ## Run Project
 1. `bundle install`
 2. `bundle exec rails db:create`
+3. `bundle exec rails db:migrate`
 3. `bundle exec rails db:seed`
 4. `rails s`
